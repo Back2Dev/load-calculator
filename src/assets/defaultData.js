@@ -1,0 +1,277 @@
+export const defaultData = {
+  Kitchen: [
+    {
+      name: 'Electric stove top',
+      quantity: 0,
+      watts: 1000,
+      hours: 0.5,
+    },
+    {
+      name: 'Electric oven',
+      quantity: 0,
+      watts: 4000,
+      hours: 0.5,
+    },
+    {
+      name: 'Kettle',
+      quantity: 0,
+      watts: 2000,
+      hours: 0.1,
+    },
+    {
+      name: 'Toaster',
+      quantity: 0,
+      watts: 1500,
+      hours: 0.1,
+    },
+    {
+      name: 'Fridge large',
+      quantity: 0,
+      watts: 200,
+      hours: 4,
+    },
+    {
+      name: 'Bar fridge',
+      quantity: 0,
+      watts: 65,
+      hours: 4,
+    },
+    {
+      name: 'Freezer',
+      quantity: 0,
+      watts: 250,
+      hours: 8,
+    },
+    {
+      name: 'Microwave',
+      quantity: 0,
+      watts: 600,
+      hours: 0.1,
+    },
+    {
+      name: 'Dishwasher',
+      quantity: 0,
+      watts: 500,
+      hours: 1,
+    },
+    {
+      name: 'Coffee machine',
+      quantity: 0,
+      watts: 1200,
+      hours: 0.2,
+    },
+    {
+      name: 'Rangehood',
+      quantity: 0,
+      watts: 150,
+      hours: 1,
+    },
+    {
+      name: 'Air fryer',
+      quantity: 0,
+      watts: 2000,
+      hours: 0.5,
+    },
+  ],
+  Laundry: [
+    {
+      name: 'Dryer',
+      quantity: 0,
+      watts: 500,
+      hours: 1,
+    },
+    {
+      name: 'Washing machine',
+      quantity: 0,
+      watts: 500,
+      hours: 1,
+    },
+    {
+      name: 'Iron',
+      quantity: 0,
+      watts: 110,
+      hours: 0.2,
+    },
+  ],
+  Bathroom: [
+    {
+      name: 'Hair dryer',
+      quantity: 0,
+      watts: 1000,
+      hours: 0.1,
+    },
+    {
+      name: 'Elect Towel rail',
+      quantity: 0,
+      watts: 1000,
+      hours: 0.5,
+    },
+    {
+      name: 'Radiator/heater',
+      quantity: 0,
+      watts: 2000,
+      hours: 0.5,
+    },
+  ],
+  Entertainment: [
+    {
+      name: 'TV',
+      quantity: 0,
+      watts: 200,
+      hours: 6,
+    },
+    {
+      name: 'Computers',
+      quantity: 0,
+      watts: 70,
+      hours: 2,
+    },
+    {
+      name: 'Internet / Modem',
+      quantity: 0,
+      watts: 20,
+      hours: 4,
+    },
+    {
+      name: 'Gaming console',
+      quantity: 0,
+      watts: 200,
+      hours: 2,
+    },
+  ],
+
+  Household: [
+    {
+      name: 'Lights',
+      quantity: 20,
+      watts: 40,
+      hours: 8,
+    },
+    {
+      name: 'Out door flood lights Large',
+      quantity: 0,
+      watts: 300,
+      hours: 2,
+    },
+    {
+      name: 'Slab heating',
+      quantity: 0,
+      watts: 200,
+      hours: 4,
+    },
+    {
+      name: 'Bar or oil heaters',
+      quantity: 0,
+      watts: 2400,
+      hours: 2,
+    },
+    {
+      name: 'Ceiling fans',
+      quantity: 0,
+      watts: 75,
+      hours: 2,
+    },
+  ],
+  Utilities: [
+    {
+      name: 'Elec Hot Water (3kw element)',
+      quantity: 0,
+      watts: 3000,
+      hours: 3,
+    },
+    {
+      name: 'Air conditioning -reverse cycle',
+      quantity: 0,
+      watts: 4000,
+      hours: 3,
+    },
+    {
+      name: 'Vacuum cleaner',
+      quantity: 0,
+      watts: 800,
+      hours: 1,
+    },
+    {
+      name: 'Pool Heating',
+      quantity: 0,
+      watts: 300,
+      hours: 12,
+    },
+    {
+      name: 'Pool Pump',
+      quantity: 0,
+      watts: 2500,
+      hours: 6,
+    },
+    {
+      name: 'Septic pump',
+      quantity: 0,
+      watts: 700,
+      hours: 1,
+    },
+    {
+      name: 'Water pump',
+      quantity: 0,
+      watts: 150,
+      hours: 4,
+    },
+  ],
+  Workshop: [
+    {
+      name: 'Compressor',
+      quantity: 0,
+      watts: 1600,
+      hours: 1,
+    },
+    {
+      name: 'Drill press',
+      quantity: 0,
+      watts: 500,
+      hours: 0.2,
+    },
+    {
+      name: 'Welder small',
+      quantity: 0,
+      watts: 3000,
+      hours: 0.2,
+    },
+    {
+      name: 'Battery charger (for cordless tools)',
+      quantity: 0,
+      watts: 150,
+      hours: 12,
+    },
+    {
+      name: 'Saw bench',
+      quantity: 0,
+      watts: 1400,
+      hours: 0.2,
+    },
+  ],
+  'Out door': [
+    {
+      name: 'Pond Pump',
+      quantity: 0,
+      watts: 50,
+      hours: 24,
+    },
+    {
+      name: 'Patio Heater',
+      quantity: 0,
+      watts: 2800,
+      hours: 2,
+    },
+    {
+      name: 'Tennis Court Lights',
+      quantity: 0,
+      watts: 200,
+      hours: 4,
+    },
+    {
+      name: 'Electric chainsaw',
+      quantity: 0,
+      watts: 1200,
+      hours: 1,
+    },
+  ],
+}

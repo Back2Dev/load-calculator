@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 // import reactLogo from './assets/react.svg'
 import './App.css'
 import { styled } from '@mui/material/styles';
@@ -24,27 +24,23 @@ const defaultValues = {
 
 
 function App() {
-
-  const [data, setData] = useState({ ...defaultData })
-
-  const [calcValues, setCalcValues] = useState(defaultValues) // percent
-
+  const originalData = { ...defaultData }
+  const data = useRef({ ...defaultData })
+  const calcValues = useRef({ ...defaultValues }) // percent
 
   useEffect(() => {
-    let temp = { ...defaultData }
 
     Object.entries(defaultData).forEach(([groupName, appliances]) => {
-      appliances.forEach((appliance, index) => {
-        temp[groupName][index]['total'] = appliance.quantity * appliance.watts * appliance.hours
-        console.log(temp[groupName][index]['total'])
+      appliances.forEach(({ quantity, watts, hours }, index) => {
+        data.current[groupName][index]['total'] = quantity * watts * hours
+        console.log(data.current[groupName][index]['total'])
       })
     })
 
-    setData(temp)
   }, [])
 
   useEffect(() => {
-    const temp = { ...calcValues }
+    const temp = { ...calcValues.current }
     temp.dailyUsage = Number((calculateDailyUsage() / 1000).toFixed(2)) // convert to kW's
     // calculate totals watts
     // multiply by percentage of appliances on factor = continuous load
@@ -52,53 +48,47 @@ function App() {
     temp.usableBattery = Number((temp.dailyUsage * temp.doa).toFixed(2))
     temp.nameplate = Number((temp.usableBattery / temp.dod).toFixed(2))
     temp.minSolar = Number((temp.dailyUsage / temp.winterSunHours).toFixed(2))
-    setCalcValues(temp)
-  }, [data, calcValues])
+
+    calcValues.current = temp
+
+  }, [data.current, calcValues.current])
 
   const calculateDailyUsage = () => {
+    console.log({ data: data.current })
+
     const add = (a, b) => a + b
-    return Object.values(data)
+    return Object.values(data.current)
       .map(appliances =>
         appliances.map(appliance =>
           appliance.total)).flat().reduce(add)
   }
 
   const handleUpdateCalcValue = (e, key) => {
-    const value = e.target.value
-    const temp = { ...calcValues }
-    temp[key] = value
-    setCalcValues(temp)
+    const value = Number(e.target.value)
+    calcValues.current[key] = value
   }
 
   const handleModifyData = (e, groupName, index, key) => {
     const value = e.target.value
-    const temp = { ...data }
-    temp[groupName][index][key] = value
+    data.current[groupName][index][key] = value
 
-    const appliance = temp[groupName][index]
-    temp[groupName][index]['total'] = appliance.quantity * appliance.watts * appliance.hours
-
-    setData(temp)
+    const { quantity, watts, hours } = data.current[groupName][index][key] // appliance
+    data.current[groupName][index]['total'] = quantity * watts * hours
   }
 
   const handleApplianceAdd = (groupName, index) => {
     console.log('handleApplianceAdd')
-    const temp = { ...data }
-    temp[groupName][index]['quantity'] = 1;
-    setData(temp)
+    data.current[groupName][index]['quantity'] += 1;
   }
 
   const handleApplianceRefresh = (groupName, index) => {
     console.log('handleApplianceRefresh')
-    const temp = { ...data }
 
-    const appliance1 = { ...defaultData[groupName][index] }
-    const appliance2 = { ...data[groupName][index] }
-    console.log({ appliance1, appliance2 })
+    const appliance = { ...originalData[groupName][index] }
+    const { quantity, watts, hours } = appliance
 
-    temp[groupName][index] = appliance1
-    temp[groupName][index]['total'] = appliance1.quantity * appliance1.watts * appliance1.hours
-    setData(temp)
+    data.current[groupName][index] = appliance
+    data.current[groupName][index]['total'] = quantity * watts * hours
   }
 
   return (
@@ -116,7 +106,7 @@ function App() {
         </Grid>
 
         {
-          Object.entries(data).map(([groupName, appliances], index) => (
+          Object.entries(data.current).map(([groupName, appliances], index) => (
             <ApplianceGroup
               key={`${groupName}-${index}`}
               groupName={groupName}
@@ -130,7 +120,7 @@ function App() {
       </Box>
 
 
-      <Summary calcValues={calcValues} handleUpdateCalcValue={handleUpdateCalcValue} />
+      <Summary calcValues={calcValues.current} handleUpdateCalcValue={handleUpdateCalcValue} />
 
     </>
   )

@@ -6,13 +6,30 @@ import Item from './Item';
 
 
 
-const Summary = ({ calcValues, handleUpdateCalcValue }) => {
+const Summary = ({
+    dailyUsage,
+    percentActive,
+    maxLoad,
+    continuousLoad,
+    doa,
+    winterSunHours,
+    usableBattery,
+    dod,
+    nameplate,
+    minSolar,
+}) => {
+
+    const handleUpdateRef = (e, ref) => {
+        console.log('handleUpdateRef')
+        console.log(e, ref)
+    }
+
     return (
         <Box backgroundColor='#E4F1FB' width='800px' height='fit-content' p={4} sx={{ flexGrow: 1 }} mt={6}>
             <Grid container rowSpacing={1} columnSpacing={2}>
 
                 <Grid xs={8}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Daily kWh usage</Item></Grid>
-                <Grid xs={2} xsOffset={1}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>{calcValues.dailyUsage}</Item></Grid>
+                <Grid xs={2} xsOffset={1}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>{dailyUsage.current}</Item></Grid>
                 <Grid xs={1}></Grid>
 
                 <Grid xs={8}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Mid winter effective sun hours</Item></Grid>
@@ -20,8 +37,8 @@ const Summary = ({ calcValues, handleUpdateCalcValue }) => {
                     <TextField
                         size='small'
                         margin='none'
-                        value={calcValues.winterSunHours}
-                        onChange={(e) => handleUpdateCalcValue(e, 'winterSunHours')}
+                        value={winterSunHours.current}
+                        onChange={(e) => { winterSunHours.current = Number(e.target.value) }}
                         sx={{ backgroundColor: '#fff', "& .MuiOutlinedInput-input": { height: '1.25rem' } }}
                     />
                 </Grid>
@@ -30,7 +47,7 @@ const Summary = ({ calcValues, handleUpdateCalcValue }) => {
                 </Grid>
 
                 <Grid xs={8}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Minimum solar PV</Item></Grid>
-                <Grid xs={2} xsOffset={1}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>{calcValues.minSolar}kW</Item></Grid>
+                <Grid xs={2} xsOffset={1}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>{minSolar.current}kW</Item></Grid>
                 <Grid xs={1}></Grid>
 
                 <Grid xs={8}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Percet of appliances on at once</Item></Grid>
@@ -38,8 +55,8 @@ const Summary = ({ calcValues, handleUpdateCalcValue }) => {
                     <TextField
                         size='small'
                         margin='none'
-                        value={calcValues.percentActive}
-                        onChange={(e) => handleUpdateCalcValue(e, 'percentActive')}
+                        value={percentActive.current}
+                        onChange={(e) => { percentActive.current = Number(e.target.value) }}
                         sx={{ backgroundColor: '#fff', "& .MuiOutlinedInput-input": { height: '1.25rem' } }}
                     />
                 </Grid>
@@ -48,7 +65,7 @@ const Summary = ({ calcValues, handleUpdateCalcValue }) => {
                 </Grid>
 
                 <Grid xs={8}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Continuous load</Item></Grid>
-                <Grid xs={2} xsOffset={1}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>9,400</Item></Grid>
+                <Grid xs={2} xsOffset={1}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>{continuousLoad.current}</Item></Grid>
                 <Grid xs={1}></Grid>
 
                 <Grid xs={8}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Days of Autonomy required</Item></Grid>
@@ -56,8 +73,8 @@ const Summary = ({ calcValues, handleUpdateCalcValue }) => {
                     <TextField
                         size='small'
                         margin='none'
-                        value={calcValues.doa}
-                        onChange={(e) => handleUpdateCalcValue(e, 'doa')}
+                        value={doa.current}
+                        onChange={(e) => { doa.current = Number(e.target.value) }}
                         sx={{ backgroundColor: '#fff', "& .MuiOutlinedInput-input": { height: '1.25rem' } }}
                     />
                 </Grid>
@@ -66,7 +83,7 @@ const Summary = ({ calcValues, handleUpdateCalcValue }) => {
                 </Grid>
 
                 <Grid xs={8}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Battery capacity at 80% DOC</Item></Grid>
-                <Grid xs={2} xsOffset={1}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>{calcValues.nameplate}kWh</Item></Grid>
+                <Grid xs={2} xsOffset={1}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>{nameplate.current}kWh</Item></Grid>
                 <Grid xs={1}></Grid>
 
             </Grid>

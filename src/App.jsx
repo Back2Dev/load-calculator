@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 // import reactLogo from './assets/react.svg'
 import './App.css'
 import { styled } from '@mui/material/styles';
@@ -11,9 +11,17 @@ import Summary from './components/Summary';
 
 import { defaultData } from './assets/defaultData';
 
+import { cloneDeep } from 'lodash';
+
+const add = (a, b) => a + b
+
+
+
 
 const defaultValues = {
   percentActive: 80, // percentage of appliances used at one time
+  maxLoad: 0,
+  continuousLoad: 0,
   doa: 1,
   winterSunHours: 2,
   usableBattery: 0,
@@ -25,13 +33,22 @@ const defaultValues = {
 
 function App() {
 
-  const [data, setData] = useState({ ...defaultData })
+  const [data, setData] = useState(cloneDeep(defaultData))
+  const calcValues = useRef(cloneDeep(defaultValues))
 
-  const [calcValues, setCalcValues] = useState(defaultValues) // percent
-
+  const dailyUsage = useRef(0)
+  const percentActive = useRef(80)
+  const maxLoad = useRef(0)
+  const continuousLoad = useRef(0)
+  const doa = useRef(1)
+  const winterSunHours = useRef(2)
+  const usableBattery = useRef(0)
+  const dod = useRef(8)
+  const nameplate = useRef(0)
+  const minSolar = useRef(0)
 
   useEffect(() => {
-    let temp = { ...defaultData }
+    let temp = cloneDeep(defaultData)
 
     Object.entries(defaultData).forEach(([groupName, appliances]) => {
       appliances.forEach((appliance, index) => {
@@ -44,56 +61,74 @@ function App() {
   }, [])
 
   useEffect(() => {
-    const temp = { ...calcValues }
-    temp.dailyUsage = Number((calculateDailyUsage() / 1000).toFixed(2)) // convert to kW's
+    console.log('updated?', defaultData['Kitchen'][0])
+  }, [defaultData])
+
+
+  useEffect(() => {
+
+    // const temp = cloneDeep(calcValues)
+    dailyUsage.current = Number((calculateDailyUsage() / 1000).toFixed(2)) // convert to kW's
     // calculate totals watts
     // multiply by percentage of appliances on factor = continuous load
 
-    temp.usableBattery = Number((temp.dailyUsage * temp.doa).toFixed(2))
-    temp.nameplate = Number((temp.usableBattery / temp.dod).toFixed(2))
-    temp.minSolar = Number((temp.dailyUsage / temp.winterSunHours).toFixed(2))
-    setCalcValues(temp)
-  }, [data, calcValues])
+    maxLoad.current = calculateMaxLoad()
+    continuousLoad.current = maxLoad.current * (percentActive.current / 100)
+
+    usableBattery.current = Number((dailyUsage.current * doa.current).toFixed(2))
+    nameplate.current = Number((usableBattery.current / dod.current).toFixed(2))
+    minSolar.current = Number((dailyUsage.current / winterSunHours.current).toFixed(2))
+
+    // setCalcValues(temp)
+  }, [data])
 
   const calculateDailyUsage = () => {
-    const add = (a, b) => a + b
     return Object.values(data)
       .map(appliances =>
         appliances.map(appliance =>
           appliance.total)).flat().reduce(add)
   }
 
+  const calculateMaxLoad = () => {
+    return Object.values(data)
+      .map(appliances =>
+        appliances.map(({ quantity, watts }) =>
+          quantity * watts)).flat().reduce(add)
+  }
+
   const handleUpdateCalcValue = (e, key) => {
-    const value = e.target.value
-    const temp = { ...calcValues }
-    temp[key] = value
-    setCalcValues(temp)
+    const value = e.target.value;
+    calcValues.current[key] = value;
   }
 
   const handleModifyData = (e, groupName, index, key) => {
     const value = e.target.value
-    const temp = { ...data }
+
+    const temp = cloneDeep(data)
     temp[groupName][index][key] = value
 
-    const appliance = temp[groupName][index]
-    temp[groupName][index]['total'] = appliance.quantity * appliance.watts * appliance.hours
+    const { quantity, watts, hours } = temp[groupName][index]
+    temp[groupName][index]['total'] = quantity * watts * hours
 
     setData(temp)
   }
 
   const handleApplianceAdd = (groupName, index) => {
-    console.log('handleApplianceAdd')
-    const temp = { ...data }
+    const temp = cloneDeep(data)
     temp[groupName][index]['quantity'] = 1;
+
+    const { quantity, watts, hours } = temp[groupName][index]
+    temp[groupName][index]['total'] = quantity * watts * hours
+
     setData(temp)
   }
 
   const handleApplianceRefresh = (groupName, index) => {
     console.log('handleApplianceRefresh')
-    const temp = { ...data }
+    const temp = cloneDeep(data)
 
-    const appliance1 = { ...defaultData[groupName][index] }
-    const appliance2 = { ...data[groupName][index] }
+    const appliance1 = cloneDeep(defaultData)[groupName][index]
+    const appliance2 = cloneDeep(data)[groupName][index]
     console.log({ appliance1, appliance2 })
 
     temp[groupName][index] = appliance1
@@ -130,7 +165,18 @@ function App() {
       </Box>
 
 
-      <Summary calcValues={calcValues} handleUpdateCalcValue={handleUpdateCalcValue} />
+      <Summary handleUpdateCalcValue={handleUpdateCalcValue}
+        dailyUsage={dailyUsage}
+        percentActive={percentActive}
+        maxLoad={maxLoad}
+        continuousLoad={continuousLoad}
+        doa={doa}
+        winterSunHours={winterSunHours}
+        usableBattery={usableBattery}
+        dod={dod}
+        nameplate={nameplate}
+        minSolar={minSolar}
+      />
 
     </>
   )

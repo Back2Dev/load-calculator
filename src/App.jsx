@@ -12,9 +12,17 @@ import Summary from './components/Summary';
 import { defaultData } from './assets/defaultData';
 import { DataProvider, useData } from './DataContext';
 
+import { cloneDeep } from 'lodash';
+
+const add = (a, b) => a + b
+
+
+
 
 const defaultValues = {
   percentActive: 80, // percentage of appliances used at one time
+  maxLoad: 0,
+  continuousLoad: 0,
   doa: 1,
   winterSunHours: 2,
   usableBattery: 0,
@@ -49,7 +57,6 @@ function App() {
           }
 
         </Box>
-
 
         <Summary />
       </DataProvider>

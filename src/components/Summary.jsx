@@ -17,6 +17,7 @@ const Summary = () => {
     const handleUpdate = (e, variableName) => {
         const value = Number(e.target.value)
         updateCalculationVariable(variableName, value)
+
     }
 
     return (

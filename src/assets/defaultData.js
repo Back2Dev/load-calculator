@@ -1,3 +1,17 @@
+/**
+KitchenBeaters
+KitchenBlender
+KitchenMediumFridge
+BathLaundryExhaustFan
+BathLaundryStraightner
+OfficeLaptop
+OfficePrinter
+OfficeSpeakers
+OfficeTelephone
+OutdoorPatioHeaterWall
+UtilityElectricCar
+ */
+
 export const defaultData = {
   Kitchen: [
     {
@@ -6,7 +20,7 @@ export const defaultData = {
       watts: 1000,
       hours: 0.5,
       total: 0,
-      id: 'stove',
+      icon: 'KitchenStoveTop',
     },
     {
       name: 'Electric oven',
@@ -14,7 +28,7 @@ export const defaultData = {
       watts: 4000,
       hours: 0.5,
       total: 0,
-      id: 'oven',
+      icon: 'KitchenOven',
     },
     {
       name: 'Kettle',
@@ -22,6 +36,7 @@ export const defaultData = {
       watts: 2000,
       hours: 0.1,
       total: 0,
+      icon: 'KitchenKettle',
     },
     {
       name: 'Toaster',
@@ -29,6 +44,7 @@ export const defaultData = {
       watts: 1500,
       hours: 0.1,
       total: 0,
+      icon: 'KitchenToaster',
     },
     {
       name: 'Fridge large',
@@ -36,6 +52,7 @@ export const defaultData = {
       watts: 200,
       hours: 4,
       total: 0,
+      icons: 'KitchenLargeFridge',
     },
     {
       name: 'Bar fridge',
@@ -43,6 +60,7 @@ export const defaultData = {
       watts: 65,
       hours: 4,
       total: 0,
+      icon: 'KitchenSmallFridge',
     },
     {
       name: 'Freezer',
@@ -50,6 +68,7 @@ export const defaultData = {
       watts: 250,
       hours: 8,
       total: 0,
+      icon: 'KitchenFreezer',
     },
     {
       name: 'Microwave',
@@ -57,6 +76,7 @@ export const defaultData = {
       watts: 600,
       hours: 0.1,
       total: 0,
+      icon: 'KitchenMicrowave',
     },
     {
       name: 'Dishwasher',
@@ -64,6 +84,7 @@ export const defaultData = {
       watts: 500,
       hours: 1,
       total: 0,
+      icon: 'KitchenDishwasher',
     },
     {
       name: 'Coffee machine',
@@ -71,6 +92,7 @@ export const defaultData = {
       watts: 1200,
       hours: 0.2,
       total: 0,
+      icon: 'KitchenCoffeeMachine',
     },
     {
       name: 'Rangehood',
@@ -78,6 +100,7 @@ export const defaultData = {
       watts: 150,
       hours: 1,
       total: 0,
+      icon: 'KitchenRangehood',
     },
     {
       name: 'Air fryer',
@@ -85,6 +108,7 @@ export const defaultData = {
       watts: 2000,
       hours: 0.5,
       total: 0,
+      icon: 'KitchenAirFryer',
     },
   ],
   Laundry: [
@@ -94,6 +118,7 @@ export const defaultData = {
       watts: 500,
       hours: 1,
       total: 0,
+      icon: 'BathLaundryClothesDryer',
     },
     {
       name: 'Washing machine',
@@ -101,6 +126,7 @@ export const defaultData = {
       watts: 500,
       hours: 1,
       total: 0,
+      icon: 'BathLaundryWashingMachine',
     },
     {
       name: 'Iron',
@@ -108,6 +134,7 @@ export const defaultData = {
       watts: 110,
       hours: 0.2,
       total: 0,
+      icon: 'BathLaundryIron',
     },
   ],
   Bathroom: [
@@ -117,6 +144,7 @@ export const defaultData = {
       watts: 1000,
       hours: 0.1,
       total: 0,
+      icon: 'BathLaundryHairdryer',
     },
     {
       name: 'Elect Towel rail',
@@ -124,6 +152,7 @@ export const defaultData = {
       watts: 1000,
       hours: 0.5,
       total: 0,
+      icon: 'BathLaundryHeatedTowelRail',
     },
     {
       name: 'Radiator/heater',
@@ -131,6 +160,7 @@ export const defaultData = {
       watts: 2000,
       hours: 0.5,
       total: 0,
+      icon: 'BathLaundryRadiator',
     },
   ],
   Entertainment: [
@@ -140,6 +170,7 @@ export const defaultData = {
       watts: 200,
       hours: 6,
       total: 0,
+      icon: 'OfficeTV',
     },
     {
       name: 'Computers',
@@ -147,6 +178,7 @@ export const defaultData = {
       watts: 70,
       hours: 2,
       total: 0,
+      icon: 'OfficeComputer',
     },
     {
       name: 'Internet / Modem',
@@ -154,6 +186,7 @@ export const defaultData = {
       watts: 20,
       hours: 4,
       total: 0,
+      icon: 'OfficeModem',
     },
     {
       name: 'Gaming console',
@@ -161,6 +194,7 @@ export const defaultData = {
       watts: 200,
       hours: 2,
       total: 0,
+      icon: 'OfficeGamingConsole',
     },
   ],
 
@@ -171,6 +205,7 @@ export const defaultData = {
       watts: 40,
       hours: 8,
       total: 0,
+      icon: '',
     },
     {
       name: 'Out door flood lights Large',
@@ -178,6 +213,7 @@ export const defaultData = {
       watts: 300,
       hours: 2,
       total: 0,
+      icon: 'UtilityOutdoorLighting',
     },
     {
       name: 'Slab heating',
@@ -185,6 +221,7 @@ export const defaultData = {
       watts: 200,
       hours: 4,
       total: 0,
+      icon: 'UtilitySlabHeating',
     },
     {
       name: 'Bar or oil heaters',
@@ -192,6 +229,7 @@ export const defaultData = {
       watts: 2400,
       hours: 2,
       total: 0,
+      icon: '',
     },
     {
       name: 'Ceiling fans',
@@ -199,6 +237,7 @@ export const defaultData = {
       watts: 75,
       hours: 2,
       total: 0,
+      icon: '',
     },
   ],
   Utilities: [
@@ -208,6 +247,7 @@ export const defaultData = {
       watts: 3000,
       hours: 3,
       total: 0,
+      icon: 'UtilityHotWaterService',
     },
     {
       name: 'Air conditioning -reverse cycle',
@@ -215,6 +255,7 @@ export const defaultData = {
       watts: 4000,
       hours: 3,
       total: 0,
+      icon: '',
     },
     {
       name: 'Vacuum cleaner',
@@ -222,6 +263,7 @@ export const defaultData = {
       watts: 800,
       hours: 1,
       total: 0,
+      icon: '',
     },
     {
       name: 'Pool Heating',
@@ -229,6 +271,7 @@ export const defaultData = {
       watts: 300,
       hours: 12,
       total: 0,
+      icon: 'UtilitySwimmingPool',
     },
     {
       name: 'Pool Pump',
@@ -236,6 +279,7 @@ export const defaultData = {
       watts: 2500,
       hours: 6,
       total: 0,
+      icon: 'UtilityPump',
     },
     {
       name: 'Septic pump',
@@ -243,6 +287,7 @@ export const defaultData = {
       watts: 700,
       hours: 1,
       total: 0,
+      icon: '',
     },
     {
       name: 'Water pump',
@@ -250,6 +295,7 @@ export const defaultData = {
       watts: 150,
       hours: 4,
       total: 0,
+      icon: '',
     },
   ],
   Workshop: [
@@ -259,6 +305,7 @@ export const defaultData = {
       watts: 1600,
       hours: 1,
       total: 0,
+      icon: 'WorkshopCompressor',
     },
     {
       name: 'Drill press',
@@ -266,6 +313,7 @@ export const defaultData = {
       watts: 500,
       hours: 0.2,
       total: 0,
+      icon: 'WorkshopDrillPress',
     },
     {
       name: 'Welder small',
@@ -273,6 +321,7 @@ export const defaultData = {
       watts: 3000,
       hours: 0.2,
       total: 0,
+      icon: 'WorkshopWelder',
     },
     {
       name: 'Battery charger (for cordless tools)',
@@ -280,6 +329,7 @@ export const defaultData = {
       watts: 150,
       hours: 12,
       total: 0,
+      icon: 'WorkshopBatteryCharger',
     },
     {
       name: 'Saw bench',
@@ -287,6 +337,7 @@ export const defaultData = {
       watts: 1400,
       hours: 0.2,
       total: 0,
+      icon: 'WorkshopBenchSaw',
     },
   ],
   'Out door': [
@@ -296,6 +347,7 @@ export const defaultData = {
       watts: 50,
       hours: 24,
       total: 0,
+      icon: 'OutdoorPondPump',
     },
     {
       name: 'Patio Heater',
@@ -303,6 +355,7 @@ export const defaultData = {
       watts: 2800,
       hours: 2,
       total: 0,
+      icon: 'OutdoorPatioHeaterFreestanding',
     },
     {
       name: 'Tennis Court Lights',
@@ -310,6 +363,7 @@ export const defaultData = {
       watts: 200,
       hours: 4,
       total: 0,
+      icon: 'OutdoorTennisCourtLight',
     },
     {
       name: 'Electric chainsaw',
@@ -317,6 +371,7 @@ export const defaultData = {
       watts: 1200,
       hours: 1,
       total: 0,
+      icon: 'OutdoorChainsaw',
     },
   ],
 }

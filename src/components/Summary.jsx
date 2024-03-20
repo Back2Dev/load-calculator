@@ -10,9 +10,7 @@ import { useData } from '../DataContext';
 
 const Summary = () => {
 
-    const { dailyUsage, continuousLoad, percentActive, doa, winterSunHours, nameplate, minSolar, updateCalculationVariable } = useData()
-
-    console.log({ continuousLoad })
+    const { totalLoad, dailyUsage, continuousLoad, percentActive, doa, winterSunHours, nameplate, minSolar, updateCalculationVariable } = useData()
 
     const handleUpdate = (e, variableName) => {
         const value = Number(e.target.value)
@@ -37,6 +35,20 @@ const Summary = () => {
                     />
                 </Grid>
                 <Grid xs={1}></Grid>
+                <Grid xs={8}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Peak load (total load)</Item></Grid>
+                <Grid xs={2} xsOffset={1}>
+                    <TextField
+                        size='small'
+                        margin='none'
+                        value={totalLoad}
+                        sx={{ backgroundColor: '#fff', "& .MuiOutlinedInput-input": { height: '1.25rem' } }}
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end">kW</InputAdornment>
+                        }}
+                    />
+                </Grid>
+                <Grid xs={1}></Grid>
+
 
                 <Grid xs={12} my={0.5}></Grid>
 

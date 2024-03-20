@@ -14,22 +14,37 @@ import { DataProvider, useData } from './DataContext';
 
 import { cloneDeep } from 'lodash';
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+
+import SvgIcon from '@mui/material/SvgIcon';
+import TestIcon from './assets/iconComponents/TestIcon'
+
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#005288',
+    },
+    secondary: {
+      main: '#00A4E4',
+    },
+    light: {
+      main: '#E4F1FB',
+    },
+    danger: {
+      main: '#BE1E2D',
+    },
+    success: {
+      main: '#00D100'
+    }
+  },
+});
+
+
 const add = (a, b) => a + b
 
-
-
-
-const defaultValues = {
-  percentActive: 80, // percentage of appliances used at one time
-  maxLoad: 0,
-  continuousLoad: 0,
-  doa: 1,
-  winterSunHours: 2,
-  usableBattery: 0,
-  dod: 0.8,
-  nameplate: 0,
-  minSolar: 0,
-}
 
 
 function App() {
@@ -37,29 +52,35 @@ function App() {
 
   return (
     <>
-      <DataProvider>
-        <Typography variant='h4' my={5}>Load Calculator</Typography>
+      <ThemeProvider theme={theme}>
+        <DataProvider>
 
-        <Box backgroundColor='#E4F1FB' width='800px' height='fit-content' p={4} sx={{ flexGrow: 1 }}>
-          <Grid container rowSpacing={1} columnSpacing={2}>
-            <Grid xs={5}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Appliance</Item></Grid>
-            <Grid xs={1.5}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Quantity</Item></Grid>
-            <Grid xs={1.5}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Watts</Item></Grid>
-            <Grid xs={1.5}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Hrs/Day</Item></Grid>
-            <Grid xs={1.5}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>W/Day</Item></Grid>
+          <Typography variant='h4' my={5}>
+            Load Calculator
+          </Typography>
 
-          </Grid>
 
-          {
-            Object.entries(applianceGroups).map(([groupName, appliances], index) => (
-              <ApplianceGroup key={`${groupName}-${index}`} groupName={groupName} appliances={appliances} />
-            ))
-          }
+          <Box backgroundColor={theme.palette.light.main} width='800px' height='fit-content' p={4} sx={{ flexGrow: 1 }}>
+            <Grid container rowSpacing={1} columnSpacing={2}>
+              <Grid xs={5}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Appliance</Item></Grid>
+              <Grid xs={1.5}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Quantity</Item></Grid>
+              <Grid xs={1.5}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Watts</Item></Grid>
+              <Grid xs={1.5}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>Hrs/Day</Item></Grid>
+              <Grid xs={1.5}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>W/Day</Item></Grid>
 
-        </Box>
+            </Grid>
 
-        <Summary />
-      </DataProvider>
+            {
+              Object.entries(applianceGroups).map(([groupName, appliances], index) => (
+                <ApplianceGroup key={`${groupName}-${index}`} groupName={groupName} appliances={appliances} />
+              ))
+            }
+
+          </Box>
+
+          <Summary />
+        </DataProvider>
+      </ThemeProvider>
     </>
   )
 }

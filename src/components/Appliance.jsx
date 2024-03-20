@@ -1,17 +1,123 @@
 import React from 'react'
-import { TextField, Typography } from '@mui/material';
+
+import { TextField } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+import Stack from '@mui/material/Stack';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+
 import Item from './Item';
+
 import { useData } from '../DataContext';
+import { useTheme } from '@mui/material/styles';
+
+import SvgIcon from '@mui/material/SvgIcon';
+import InputAdornment from '@mui/material/InputAdornment';
+
+import {
+    BathLaundryClothesDryer,
+    BathLaundryExhaustFan,
+    BathLaundryHairdryer,
+    BathLaundryHeatedTowelRail,
+    BathLaundryIron,
+    BathLaundryRadiator,
+    BathLaundryStraightner,
+    BathLaundryWashingMachine,
+    HouseholdAirCon,
+    HouseholdBarOilHeater,
+    HouseholdCeilingFan,
+    HouseholdLamp,
+    HouseholdLights,
+    HouseholdPedestalFan,
+    HouseholdSecuritySystem,
+    HouseholdSewingMachine,
+    HouseholdVaccumm,
+    KitchenAirFryer,
+    KitchenBeaters,
+    KitchenBlender,
+    KitchenCoffeeMachine,
+    KitchenDishwasher,
+    KitchenFreezer,
+    KitchenKettle,
+    KitchenLargeFridge,
+    KitchenMediumFridge,
+    KitchenMicrowave,
+    KitchenOven,
+    KitchenRangehood,
+    KitchenSmallFridge,
+    KitchenStoveTop,
+    KitchenToaster,
+    OfficeComputer,
+    OfficeGamingConsole,
+    OfficeLaptop,
+    OfficeModem,
+    OfficePrinter,
+    OfficeSpeakers,
+    OfficeTv,
+    OfficeTelephone,
+    OutdoorChainsaw,
+    OutdoorPatioHeaterFreestanding,
+    OutdoorPatioHeaterWall,
+    OutdoorPondPump,
+    OutdoorTennisCourtLight,
+    UtilityElectricCar,
+    UtilityHotWaterService,
+    UtilityOutdoorLighting,
+    UtilityPump,
+    UtilitySlabHeating,
+    UtilitySwimmingPool,
+    WorkshopBatteryCharger,
+    WorkshopBenchSaw,
+    WorkshopCompressor,
+    WorkshopDrillPress,
+    WorkshopWelder
+} from './icons';
+
+const iconLookup = {
+    KitchenStoveTop: <KitchenStoveTop />,
+    KitchenOven: <KitchenOven />,
+    KitchenKettle: <KitchenKettle />,
+    KitchenToaster: <KitchenToaster />,
+    KitchenSmallFridge: <KitchenSmallFridge />,
+    KitchenFreezer: <KitchenFreezer />,
+    KitchenMicrowave: <KitchenMicrowave />,
+    KitchenDishwasher: <KitchenDishwasher />,
+    KitchenCoffeeMachine: <KitchenCoffeeMachine />,
+    KitchenRangehood: <KitchenRangehood />,
+    KitchenAirFryer: <KitchenAirFryer />,
+    BathLaundryClothesDryer: <BathLaundryClothesDryer />,
+    BathLaundryWashingMachine: <BathLaundryWashingMachine />,
+    BathLaundryIron: <BathLaundryIron />,
+    BathLaundryHairdryer: <BathLaundryHairdryer />,
+    BathLaundryHeatedTowelRail: <BathLaundryHeatedTowelRail />,
+    BathLaundryRadiator: <BathLaundryRadiator />,
+    OfficeTV: <OfficeTv />,
+    OfficeComputer: <OfficeComputer />,
+    OfficeModem: <OfficeModem />,
+    OfficeGamingConsole: <OfficeGamingConsole />,
+    UtilityOutdoorLighting: <UtilityOutdoorLighting />,
+    UtilitySlabHeating: <UtilitySlabHeating />,
+    UtilityHotWaterService: <UtilityHotWaterService />,
+    UtilitySwimmingPool: <UtilitySwimmingPool />,
+    UtilityPump: <UtilityPump />,
+    WorkshopCompressor: <WorkshopCompressor />,
+    WorkshopDrillPress: <WorkshopDrillPress />,
+    WorkshopWelder: <WorkshopWelder />,
+    WorkshopBatteryCharger: <WorkshopBatteryCharger />,
+    WorkshopBenchSaw: <WorkshopBenchSaw />,
+    OutdoorPondPump: <OutdoorPondPump />,
+    OutdoorPatioHeaterFreestanding: <OutdoorPatioHeaterFreestanding />,
+    OutdoorTennisCourtLight: <OutdoorTennisCourtLight />,
+    OutdoorChainsaw: <OutdoorChainsaw />,
+}
 
 
 
 const Appliance = ({ groupName, applianceIndex }) => {
 
-    const { applianceGroups, updateAppliance, addAppliance, removeAppliance } = useData();
+    const { applianceGroups, updateAppliance, addAppliance, removeAppliance, resetAppliance } = useData();
 
     const { name, quantity, watts, hours, total, id } = applianceGroups[groupName][applianceIndex]
 
@@ -20,20 +126,81 @@ const Appliance = ({ groupName, applianceIndex }) => {
         updateAppliance(groupName, applianceIndex, key, value)
     }
 
+    const theme = useTheme();
+
     return (
 
-        <Grid container rowSpacing={0} columnSpacing={2} mb={0.5}>
-            <Grid xs={5}><Item elevation={0} sx={{ display: 'flex', justifyContent: 'left', paddingLeft: '0.5rem' }}>{name}</Item></Grid>
-            <Grid xs={1.5}>
+        <Grid container rowSpacing={0} columnSpacing={3.5} mb={0.5}>
+            <Grid xs={5}>
                 <TextField
                     size='small'
                     margin='none'
-                    value={quantity}
+                    value={name}
                     data-cy={`${id}-qty`}
-                    onChange={(e) => handleUpdate(e, 'quantity')}
-                    sx={{ border: 0, backgroundColor: '#fff', "& .MuiOutlinedInput-input": { height: '1.25rem' } }}
+                    fullWidth
+                    sx={{
+                        border: 0,
+                        backgroundColor: '#fff',
+                        "& .MuiOutlinedInput-input": {
+                            height: '1.25rem',
+                            color: theme.palette.primary.main,
+                            textAlign: 'left',
+                        },
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            border: 'none'
+                        }
+                    }}
+                    InputProps={{
+                        endAdornment: <InputAdornment position="end">
+                            <SvgIcon component={iconLookup[applianceGroups.icon]} sx={{ fontSize: 32 }} />
+                        </InputAdornment>
+                    }}
                 />
             </Grid>
+
+
+            <Grid xs={2}>
+                <Stack spacing={1} direction="row">
+                    <RemoveCircleIcon
+                        data-cy={`${id}-add-btn`}
+                        sx={{
+                            color: theme.palette.primary.main,
+                            paddingTop: '0.375rem'
+                        }}
+                        onClick={() => removeAppliance(groupName, applianceIndex)}
+                    />
+                    <TextField
+                        size='small'
+                        margin='none'
+                        value={quantity}
+                        data-cy={`${id}-qty`}
+                        onChange={(e) => handleUpdate(e, 'quantity')}
+                        sx={{
+                            border: 0,
+                            backgroundColor: '#fff',
+                            "& .MuiOutlinedInput-input": {
+                                height: '1.25rem',
+                                color: theme.palette.primary.main,
+                                textAlign: 'center'
+                            },
+                            "& .MuiOutlinedInput-notchedOutline": {
+                                border: 'none'
+                            }
+
+                        }}
+                    />
+                    <AddCircleIcon
+                        data-cy={`${id}-add-btn`}
+                        sx={{
+                            color: theme.palette.primary.main,
+                            paddingTop: '0.375rem'
+                        }}
+                        onClick={() => addAppliance(groupName, applianceIndex)}
+                    />
+                </Stack>
+            </Grid>
+
+
             <Grid xs={1.5}>
                 <TextField
                     size='small'
@@ -41,26 +208,71 @@ const Appliance = ({ groupName, applianceIndex }) => {
                     value={watts}
                     data-cy={`${id}-watts`}
                     onChange={(e) => handleUpdate(e, 'watts')}
-                    sx={{ backgroundColor: '#fff', "& .MuiOutlinedInput-input": { height: '1.25rem' } }}
+                    sx={{
+                        backgroundColor: '#fff',
+                        "& .MuiOutlinedInput-input": {
+                            height: '1.25rem',
+                            color: theme.palette.primary.main,
+                            textAlign: 'right'
+                        },
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            border: 'none'
+                        }
+                    }}
                 />
             </Grid>
-            <Grid xs={1.5}>
+
+            <Grid xs={1.3}>
                 <TextField
                     size='small'
                     margin='none'
                     value={hours}
                     onChange={(e) => handleUpdate(e, 'hours')}
-                    sx={{ backgroundColor: '#fff', "& .MuiOutlinedInput-input": { height: '1.25rem' } }}
+                    sx={{
+                        backgroundColor: '#fff',
+                        "& .MuiOutlinedInput-input": {
+                            height: '1.25rem',
+                            color: theme.palette.primary.main,
+                            textAlign: 'center'
+                        },
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            border: 'none'
+                        }
+                    }}
                 />
             </Grid>
-            <Grid xs={1.5}>
-                <Item elevation={0}>{total}</Item>
+
+            <Grid xs={1.7}>
+                <TextField
+                    size='small'
+                    margin='none'
+                    value={total}
+                    sx={{
+                        backgroundColor: 'white',
+                        "& .MuiOutlinedInput-input": {
+                            height: '1.25rem',
+                            color: theme.palette.primary.main,
+                            textAlign: 'right',
+                        },
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            border: 'none'
+                        }
+
+                    }}
+                />
             </Grid>
-            <Grid xs={1}>
+
+
+            <Grid xs={0.5}>
                 {
-                    (quantity === 0)
-                        ? <AddCircleIcon data-cy={`${id}-add-btn`} sx={{ color: '#005288', marginTop: '0.5rem' }} onClick={() => addAppliance(groupName, applianceIndex)} />
-                        : <CancelIcon sx={{ color: '#BE1E2D', marginTop: '0.5rem' }} onClick={() => removeAppliance(groupName, applianceIndex)} />
+                    (quantity > 0)
+                        ? <CancelIcon sx={{
+                            color: theme.palette.danger.main,
+                            paddingTop: '0.375rem',
+                            marginLeft: '-0.75rem'
+                        }}
+                            onClick={() => resetAppliance(groupName, applianceIndex)} />
+                        : null
                 }
             </Grid>
         </Grid>

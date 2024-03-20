@@ -1,6 +1,9 @@
 import { createContext, useContext, useReducer } from 'react'
 import { ACTION, dataReducer, initialState } from './dataReducer'
 
+import { defaultData } from './assets/defaultData'
+import { cloneDeep } from 'lodash'
+
 const DataContext = createContext(initialState)
 
 const add = (a, b) => a + b
@@ -12,14 +15,21 @@ const calculateDailyUsage = (currentState) => {
     .reduce(add)
 }
 
+const calculateTotalLoad = (currentState) => {
+  return Object.values(currentState.applianceGroups)
+    .map((appliances) => appliances.map(({ quantity, watts }) => quantity * watts))
+    .flat()
+    .reduce(add)
+}
+
 const recalculateSummary = (currentState) => {
-  // totalWatts aka totalLoad
+  const totalLoad = Number((calculateTotalLoad(currentState) / 1000).toFixed(2))
   const dailyUsage = Number((calculateDailyUsage(currentState) / 1000).toFixed(2)) // convert to kW's
-  const continuousLoad = Number((dailyUsage * (currentState.percentActive / 100)).toFixed(2))
+  const continuousLoad = Number((totalLoad * (currentState.percentActive / 100)).toFixed(2))
   const usableBattery = Number((dailyUsage * currentState.doa).toFixed(2))
   const nameplate = Number((usableBattery / currentState.dod).toFixed(2))
   const minSolar = Number((dailyUsage / currentState.winterSunHours).toFixed(2))
-  return { ...currentState, dailyUsage, continuousLoad, usableBattery, nameplate, minSolar }
+  return { ...currentState, totalLoad, dailyUsage, continuousLoad, usableBattery, nameplate, minSolar }
 }
 
 export const DataProvider = ({ children }) => {
@@ -29,16 +39,16 @@ export const DataProvider = ({ children }) => {
     console.log('addAppliance')
     const appliance = state.applianceGroups[groupName][applianceIndex]
 
-    appliance['quantity'] = 1;
+    appliance['quantity'] += 1;
     appliance['total'] = appliance.quantity * appliance.watts * appliance.hours
 
     state.applianceGroups[groupName][applianceIndex] = { ...appliance }
 
-    const { dailyUsage, continuousLoad, usableBattery, nameplate, minSolar } = recalculateSummary(state)
+    const { dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar } = recalculateSummary(state)
 
     dispatch({
       type: ACTION.ADD_APPLIANCE,
-      payload: { ...state, dailyUsage, continuousLoad, usableBattery, nameplate, minSolar },
+      payload: { ...state, dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar },
     })
   }
 
@@ -46,22 +56,44 @@ export const DataProvider = ({ children }) => {
     console.log('removeAppliance')
     const appliance = state.applianceGroups[groupName][applianceIndex]
 
-    appliance['quantity'] = 0
-    appliance['total'] = 0
+    appliance['quantity'] = (appliance.quantity > 1) ? (appliance.quantity - 1) : 0
+    appliance['total'] = appliance.quantity * appliance.watts * appliance.hours
 
     state.applianceGroups[groupName][applianceIndex] = { ...appliance }
 
-    const { dailyUsage, continuousLoad, usableBattery, nameplate, minSolar } = recalculateSummary(state)
+    const { dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar } = recalculateSummary(state)
 
     dispatch({
       type: ACTION.REMOVE_APPLIANCE,
-      payload: { ...state, dailyUsage, continuousLoad, usableBattery, nameplate, minSolar },
+      payload: { ...state, dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar },
+    })
+  }
+
+  const resetAppliance = (groupName, applianceIndex) => {
+
+    console.log('resetAppliance')
+
+    const temp = cloneDeep(defaultData)
+
+    const appliance = state.applianceGroups[groupName][applianceIndex]
+
+    appliance['quantity'] = 0
+    appliance['total'] = 0
+    appliance['watts'] = temp[groupName][applianceIndex]['watts']
+    appliance['hours'] = temp[groupName][applianceIndex]['hours']
+
+    state.applianceGroups[groupName][applianceIndex] = { ...appliance }
+
+    const { dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar } = recalculateSummary(state)
+
+    dispatch({
+      type: ACTION.REMOVE_APPLIANCE,
+      payload: { ...state, dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar },
     })
   }
 
   const updateAppliance = (groupName, applianceIndex, key, value) => {
     console.log('updateAppliance')
-    console.log(groupName, applianceIndex, key, value)
 
     const appliance = state.applianceGroups[groupName][applianceIndex]
 
@@ -70,23 +102,25 @@ export const DataProvider = ({ children }) => {
 
     state.applianceGroups[groupName][applianceIndex] = { ...appliance }
 
-    const { dailyUsage, continuousLoad, usableBattery, nameplate, minSolar } = recalculateSummary(state)
+    const { dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar } = recalculateSummary(state)
 
     dispatch({
       type: ACTION.UPDATE_APPLIANCE,
-      payload: { ...state, dailyUsage, continuousLoad, usableBattery, nameplate, minSolar },
+      payload: { ...state, dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar },
     })
   }
 
 
   const updateCalculationVariable = (variableName, value) => {
+    console.log('updateCalculationVariable')
+
     state[variableName] = value
 
-    const { dailyUsage, usableBattery, nameplate, minSolar } = recalculateSummary(state)
+    const { dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar } = recalculateSummary(state)
 
     dispatch({
       type: ACTION.UPDATE_CALCULATION_VARIABLE,
-      payload: { ...state, dailyUsage, usableBattery, nameplate, minSolar },
+      payload: { ...state, dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar },
     })
 
   }
@@ -96,6 +130,7 @@ export const DataProvider = ({ children }) => {
     ...state,
     addAppliance,
     removeAppliance,
+    resetAppliance,
     updateAppliance,
     updateCalculationVariable,
   }

@@ -3,6 +3,7 @@ import { cloneDeep } from 'lodash'
 
 export const initialState = {
   applianceGroups: cloneDeep(defaultData), // editable -
+  totalLoad: 0,
   dailyUsage: 0,
   continuousLoad: 0,
   percentActive: 80, // editable - percentage of appliances used at one time

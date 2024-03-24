@@ -56,4 +56,3 @@ export { default as WorkshopDrillPress } from './WorkshopDrillPress24Px'
 export { default as WorkshopWelder } from './WorkshopWelder24Px'
 
 export { default as DpaLogo } from './DpaLogo'
-export { default as Test } from './Test'

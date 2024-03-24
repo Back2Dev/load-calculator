@@ -76,41 +76,41 @@ import {
 } from './icons';
 
 const iconLookup = {
-    KitchenStoveTop: <KitchenStoveTop />,
-    KitchenOven: <KitchenOven />,
-    KitchenKettle: <KitchenKettle />,
-    KitchenToaster: <KitchenToaster />,
-    KitchenSmallFridge: <KitchenSmallFridge />,
-    KitchenFreezer: <KitchenFreezer />,
-    KitchenMicrowave: <KitchenMicrowave />,
-    KitchenDishwasher: <KitchenDishwasher />,
-    KitchenCoffeeMachine: <KitchenCoffeeMachine />,
-    KitchenRangehood: <KitchenRangehood />,
-    KitchenAirFryer: <KitchenAirFryer />,
-    BathLaundryClothesDryer: <BathLaundryClothesDryer />,
-    BathLaundryWashingMachine: <BathLaundryWashingMachine />,
-    BathLaundryIron: <BathLaundryIron />,
-    BathLaundryHairdryer: <BathLaundryHairdryer />,
-    BathLaundryHeatedTowelRail: <BathLaundryHeatedTowelRail />,
-    BathLaundryRadiator: <BathLaundryRadiator />,
-    OfficeTV: <OfficeTv />,
-    OfficeComputer: <OfficeComputer />,
-    OfficeModem: <OfficeModem />,
-    OfficeGamingConsole: <OfficeGamingConsole />,
-    UtilityOutdoorLighting: <UtilityOutdoorLighting />,
-    UtilitySlabHeating: <UtilitySlabHeating />,
-    UtilityHotWaterService: <UtilityHotWaterService />,
-    UtilitySwimmingPool: <UtilitySwimmingPool />,
-    UtilityPump: <UtilityPump />,
-    WorkshopCompressor: <WorkshopCompressor />,
-    WorkshopDrillPress: <WorkshopDrillPress />,
-    WorkshopWelder: <WorkshopWelder />,
-    WorkshopBatteryCharger: <WorkshopBatteryCharger />,
-    WorkshopBenchSaw: <WorkshopBenchSaw />,
-    OutdoorPondPump: <OutdoorPondPump />,
-    OutdoorPatioHeaterFreestanding: <OutdoorPatioHeaterFreestanding />,
-    OutdoorTennisCourtLight: <OutdoorTennisCourtLight />,
-    OutdoorChainsaw: <OutdoorChainsaw />,
+    'KitchenStoveTop': KitchenStoveTop,
+    'KitchenOven': KitchenOven,
+    'KitchenKettle': KitchenKettle,
+    'KitchenToaster': KitchenToaster,
+    'KitchenSmallFridge': KitchenSmallFridge,
+    'KitchenFreezer': KitchenFreezer,
+    'KitchenMicrowave': KitchenMicrowave,
+    'KitchenDishwasher': KitchenDishwasher,
+    'KitchenCoffeeMachine': KitchenCoffeeMachine,
+    'KitchenRangehood': KitchenRangehood,
+    'KitchenAirFryer': KitchenAirFryer,
+    'BathLaundryClothesDryer': BathLaundryClothesDryer,
+    'BathLaundryWashingMachine': BathLaundryWashingMachine,
+    'BathLaundryIron': BathLaundryIron,
+    'BathLaundryHairdryer': BathLaundryHairdryer,
+    'BathLaundryHeatedTowelRail': BathLaundryHeatedTowelRail,
+    'BathLaundryRadiator': BathLaundryRadiator,
+    'OfficeTV': OfficeTv,
+    'OfficeComputer': OfficeComputer,
+    'OfficeModem': OfficeModem,
+    'OfficeGamingConsole': OfficeGamingConsole,
+    'UtilityOutdoorLighting': UtilityOutdoorLighting,
+    'UtilitySlabHeating': UtilitySlabHeating,
+    'UtilityHotWaterService': UtilityHotWaterService,
+    'UtilitySwimmingPool': UtilitySwimmingPool,
+    'UtilityPump': UtilityPump,
+    'WorkshopCompressor': WorkshopCompressor,
+    'WorkshopDrillPress': WorkshopDrillPress,
+    'WorkshopWelder': WorkshopWelder,
+    'WorkshopBatteryCharger': WorkshopBatteryCharger,
+    'WorkshopBenchSaw': WorkshopBenchSaw,
+    'OutdoorPondPump': OutdoorPondPump,
+    'OutdoorPatioHeaterFreestanding': OutdoorPatioHeaterFreestanding,
+    'OutdoorTennisCourtLight': OutdoorTennisCourtLight,
+    'OutdoorChainsaw': OutdoorChainsaw,
 }
 
 
@@ -119,7 +119,7 @@ const Appliance = ({ groupName, applianceIndex }) => {
 
     const { applianceGroups, updateAppliance, addAppliance, removeAppliance, resetAppliance } = useData();
 
-    const { name, quantity, watts, hours, total, id } = applianceGroups[groupName][applianceIndex]
+    const { name, quantity, watts, hours, total, id, icon } = applianceGroups[groupName][applianceIndex]
 
     const handleUpdate = (e, key) => {
         const value = Number(e.target.value)
@@ -130,8 +130,8 @@ const Appliance = ({ groupName, applianceIndex }) => {
 
     return (
 
-        <Grid container rowSpacing={0} columnSpacing={3.5} mb={0.5}>
-            <Grid xs={5}>
+        <Grid container rowSpacing={0} columnSpacing={3.5} mb={0.75}>
+            <Grid xs={5.0}>
                 <TextField
                     size='small'
                     margin='none'
@@ -140,7 +140,7 @@ const Appliance = ({ groupName, applianceIndex }) => {
                     fullWidth
                     sx={{
                         border: 0,
-                        backgroundColor: '#fff',
+                        backgroundColor: theme.palette.white.main,
                         "& .MuiOutlinedInput-input": {
                             height: '1.25rem',
                             color: theme.palette.primary.main,
@@ -152,7 +152,7 @@ const Appliance = ({ groupName, applianceIndex }) => {
                     }}
                     InputProps={{
                         endAdornment: <InputAdornment position="end">
-                            <SvgIcon component={iconLookup[applianceGroups.icon]} sx={{ fontSize: 32 }} />
+                            <SvgIcon component={iconLookup[icon]} sx={{ fontSize: 32 }} />
                         </InputAdornment>
                     }}
                 />
@@ -177,7 +177,7 @@ const Appliance = ({ groupName, applianceIndex }) => {
                         onChange={(e) => handleUpdate(e, 'quantity')}
                         sx={{
                             border: 0,
-                            backgroundColor: '#fff',
+                            backgroundColor: theme.palette.white.main,
                             "& .MuiOutlinedInput-input": {
                                 height: '1.25rem',
                                 color: theme.palette.primary.main,
@@ -209,7 +209,7 @@ const Appliance = ({ groupName, applianceIndex }) => {
                     data-cy={`${id}-watts`}
                     onChange={(e) => handleUpdate(e, 'watts')}
                     sx={{
-                        backgroundColor: '#fff',
+                        backgroundColor: theme.palette.white.main,
                         "& .MuiOutlinedInput-input": {
                             height: '1.25rem',
                             color: theme.palette.primary.main,
@@ -222,14 +222,14 @@ const Appliance = ({ groupName, applianceIndex }) => {
                 />
             </Grid>
 
-            <Grid xs={1.3}>
+            <Grid xs={1.5}>
                 <TextField
                     size='small'
                     margin='none'
                     value={hours}
                     onChange={(e) => handleUpdate(e, 'hours')}
                     sx={{
-                        backgroundColor: '#fff',
+                        backgroundColor: theme.palette.white.main,
                         "& .MuiOutlinedInput-input": {
                             height: '1.25rem',
                             color: theme.palette.primary.main,
@@ -242,13 +242,13 @@ const Appliance = ({ groupName, applianceIndex }) => {
                 />
             </Grid>
 
-            <Grid xs={1.7}>
+            <Grid xs={1.5}>
                 <TextField
                     size='small'
                     margin='none'
                     value={total}
                     sx={{
-                        backgroundColor: 'white',
+                        backgroundColor: theme.palette.white.main,
                         "& .MuiOutlinedInput-input": {
                             height: '1.25rem',
                             color: theme.palette.primary.main,
@@ -257,7 +257,6 @@ const Appliance = ({ groupName, applianceIndex }) => {
                         "& .MuiOutlinedInput-notchedOutline": {
                             border: 'none'
                         }
-
                     }}
                 />
             </Grid>

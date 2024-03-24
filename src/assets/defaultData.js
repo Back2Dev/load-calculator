@@ -242,7 +242,7 @@ export const defaultData = {
   ],
   Utilities: [
     {
-      name: 'Elec Hot Water (3kw element)',
+      name: 'Electric Hot Water',
       quantity: 0,
       watts: 3000,
       hours: 3,
@@ -250,7 +250,7 @@ export const defaultData = {
       icon: 'UtilityHotWaterService',
     },
     {
-      name: 'Air conditioning -reverse cycle',
+      name: 'Air conditioning (reverse cycle)',
       quantity: 0,
       watts: 4000,
       hours: 3,
@@ -324,7 +324,7 @@ export const defaultData = {
       icon: 'WorkshopWelder',
     },
     {
-      name: 'Battery charger (for cordless tools)',
+      name: 'Battery charger',
       quantity: 0,
       watts: 150,
       hours: 12,

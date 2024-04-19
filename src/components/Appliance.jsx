@@ -75,6 +75,9 @@ import {
     WorkshopWelder
 } from './icons';
 
+/**
+
+
 const iconLookup = {
     'KitchenStoveTop': KitchenStoveTop,
     'KitchenOven': KitchenOven,
@@ -112,7 +115,66 @@ const iconLookup = {
     'OutdoorTennisCourtLight': OutdoorTennisCourtLight,
     'OutdoorChainsaw': OutdoorChainsaw,
 }
+ */
 
+const iconLookup = {
+    'BathLaundryClothesDryer': BathLaundryClothesDryer,
+    'BathLaundryExhaustFan': BathLaundryExhaustFan,
+    'BathLaundryHairdryer': BathLaundryHairdryer,
+    'BathLaundryHeatedTowelRail': BathLaundryHeatedTowelRail,
+    'BathLaundryIron': BathLaundryIron,
+    'BathLaundryRadiator': BathLaundryRadiator,
+    'BathLaundryStraightner': BathLaundryStraightner,
+    'BathLaundryWashingMachine': BathLaundryWashingMachine,
+    'HouseholdAirCon': HouseholdAirCon,
+    'HouseholdBarOilHeater': HouseholdBarOilHeater,
+    'HouseholdCeilingFan': HouseholdCeilingFan,
+    'HouseholdLamp': HouseholdLamp,
+    'HouseholdLights': HouseholdLights,
+    'HouseholdPedestalFan': HouseholdPedestalFan,
+    'HouseholdSecuritySystem': HouseholdSecuritySystem,
+    'HouseholdSewingMachine': HouseholdSewingMachine,
+    'HouseholdVaccumm': HouseholdVaccumm,
+    'KitchenAirFryer': KitchenAirFryer,
+    'KitchenBeaters': KitchenBeaters,
+    'KitchenBlender': KitchenBlender,
+    'KitchenCoffeeMachine': KitchenCoffeeMachine,
+    'KitchenDishwasher': KitchenDishwasher,
+    'KitchenFreezer': KitchenFreezer,
+    'KitchenKettle': KitchenKettle,
+    'KitchenLargeFridge': KitchenLargeFridge,
+    'KitchenMediumFridge': KitchenMediumFridge,
+    'KitchenMicrowave': KitchenMicrowave,
+    'KitchenOven': KitchenOven,
+    'KitchenRangehood': KitchenRangehood,
+    'KitchenSmallFridge': KitchenSmallFridge,
+    'KitchenStoveTop': KitchenStoveTop,
+    'KitchenToaster': KitchenToaster,
+    'OfficeComputer': OfficeComputer,
+    'OfficeGamingConsole': OfficeGamingConsole,
+    'OfficeLaptop': OfficeLaptop,
+    'OfficeModem': OfficeModem,
+    'OfficePrinter': OfficePrinter,
+    'OfficeSpeakers': OfficeSpeakers,
+    'OfficeTv': OfficeTv,
+    'OfficeTelephone': OfficeTelephone,
+    'OutdoorChainsaw': OutdoorChainsaw,
+    'OutdoorPatioHeaterFreestanding': OutdoorPatioHeaterFreestanding,
+    'OutdoorPatioHeaterWall': OutdoorPatioHeaterWall,
+    'OutdoorPondPump': OutdoorPondPump,
+    'OutdoorTennisCourtLight': OutdoorTennisCourtLight,
+    'UtilityElectricCar': UtilityElectricCar,
+    'UtilityHotWaterService': UtilityHotWaterService,
+    'UtilityOutdoorLighting': UtilityOutdoorLighting,
+    'UtilityPump': UtilityPump,
+    'UtilitySlabHeating': UtilitySlabHeating,
+    'UtilitySwimmingPool': UtilitySwimmingPool,
+    'WorkshopBatteryCharger': WorkshopBatteryCharger,
+    'WorkshopBenchSaw': WorkshopBenchSaw,
+    'WorkshopCompressor': WorkshopCompressor,
+    'WorkshopDrillPress': WorkshopDrillPress,
+    'WorkshopWelder': WorkshopWelder,
+}
 
 
 const Appliance = ({ groupName, applianceIndex }) => {
@@ -122,7 +184,9 @@ const Appliance = ({ groupName, applianceIndex }) => {
     const { name, quantity, watts, hours, total, id, icon } = applianceGroups[groupName][applianceIndex]
 
     const handleUpdate = (e, key) => {
-        const value = Number(e.target.value)
+        // const value = Number(e.target.value)
+        const value = e.target.value.replace(/[^\d.]/g, "");
+
         updateAppliance(groupName, applianceIndex, key, value)
     }
 
@@ -130,7 +194,7 @@ const Appliance = ({ groupName, applianceIndex }) => {
 
     return (
 
-        <Grid container rowSpacing={0} columnSpacing={3.5} mb={0.75}>
+        <Grid container rowSpacing={0} columnSpacing={1.5} mb={0.75}>
             <Grid xs={5.0}>
                 <TextField
                     size='small'
@@ -268,7 +332,7 @@ const Appliance = ({ groupName, applianceIndex }) => {
                         ? <CancelIcon sx={{
                             color: theme.palette.danger.main,
                             paddingTop: '0.375rem',
-                            marginLeft: '-0.75rem'
+                            marginLeft: '0.375rem'
                         }}
                             onClick={() => resetAppliance(groupName, applianceIndex)} />
                         : null

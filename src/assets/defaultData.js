@@ -1,17 +1,3 @@
-/**
-KitchenBeaters
-KitchenBlender
-KitchenMediumFridge
-BathLaundryExhaustFan
-BathLaundryStraightner
-OfficeLaptop
-OfficePrinter
-OfficeSpeakers
-OfficeTelephone
-OutdoorPatioHeaterWall
-UtilityElectricCar
- */
-
 export const defaultData = {
   Kitchen: [
     {
@@ -52,7 +38,7 @@ export const defaultData = {
       watts: 200,
       hours: 4,
       total: 0,
-      icons: 'KitchenLargeFridge',
+      icon: 'KitchenLargeFridge',
     },
     {
       name: 'Bar fridge',
@@ -170,7 +156,7 @@ export const defaultData = {
       watts: 200,
       hours: 6,
       total: 0,
-      icon: 'OfficeTV',
+      icon: 'OfficeTv',
     },
     {
       name: 'Computers',
@@ -201,11 +187,11 @@ export const defaultData = {
   Household: [
     {
       name: 'Lights',
-      quantity: 20,
+      quantity: 0,
       watts: 40,
       hours: 8,
       total: 0,
-      icon: '',
+      icon: 'HouseholdLights',
     },
     {
       name: 'Out door flood lights Large',
@@ -229,7 +215,7 @@ export const defaultData = {
       watts: 2400,
       hours: 2,
       total: 0,
-      icon: '',
+      icon: 'HouseholdBarOilHeater',
     },
     {
       name: 'Ceiling fans',
@@ -237,7 +223,7 @@ export const defaultData = {
       watts: 75,
       hours: 2,
       total: 0,
-      icon: '',
+      icon: 'HouseholdCeilingFan',
     },
   ],
   Utilities: [
@@ -255,15 +241,15 @@ export const defaultData = {
       watts: 4000,
       hours: 3,
       total: 0,
-      icon: '',
+      icon: 'HouseholdAirCon',
     },
     {
-      name: 'Vacuum cleaner',
+      name: 'Vaccum cleaner',
       quantity: 0,
       watts: 800,
       hours: 1,
       total: 0,
-      icon: '',
+      icon: 'HouseholdVaccumm',
     },
     {
       name: 'Pool Heating',
@@ -287,7 +273,7 @@ export const defaultData = {
       watts: 700,
       hours: 1,
       total: 0,
-      icon: '',
+      icon: 'UtilityPump',
     },
     {
       name: 'Water pump',
@@ -295,7 +281,7 @@ export const defaultData = {
       watts: 150,
       hours: 4,
       total: 0,
-      icon: '',
+      icon: 'OutdoorPondPump',
     },
   ],
   Workshop: [

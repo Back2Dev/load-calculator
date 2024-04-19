@@ -18,6 +18,14 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 import SvgIcon from '@mui/material/SvgIcon';
+import TableHeaders from './components/TableHeaders';
+
+
+import { PDFDownloadLink } from '@react-pdf/renderer'
+import { PDFViewer } from '@react-pdf/renderer';
+import PdfDocument from './components/PdfDocument';
+import PdfDocumentMake from './components/PdfDocumentMake';
+
 
 
 
@@ -61,89 +69,116 @@ function App() {
         <DataProvider>
 
 
-          <Box backgroundColor={theme.palette.white.main} width={1000} height='fit-content' pb={6} sx={{ flexGrow: 1 }}>
+          <Box backgroundColor={theme.palette.white.main} width='100vw' height='fit-content' pb={6} >
 
 
-            <Box width='1000px' height='50px' pt={3} pb={1} sx={{
-              flexGrow: 1,
-              backgroundImage: 'linear-gradient(to right, #005288 , #00A4E4)'
+            <Box width='max-width' minHeight='50px' height='fit-content' pt={3} pb={1} sx={{
+              display: 'flex',
+              background: 'linear-gradient(to right, #005288 , #00A4E4)',
+              justifyContent: 'center'
             }}>
-              <Typography variant='h4' fontWeight='bold' color={theme.palette.white.main} textAlign='left' ml={8}>
-                Off-grid Load Calculator
-              </Typography>
-            </Box>
 
-
-            <Box width={800} height='fit-content' mx={8} my={4}>
-              <Typography color={theme.palette.black.main} textAlign='left' fontSize={18} lineHeight={1.5} variant='subtitle2'>
-                We want to help you calculate the system that’s right for you.
-                Fill out the table below to estimate energy usage.
-                We’ve included some common household appliances.
-                Try to account for everything.
-                <br></br>
-                <ul>
-                  <li>Select the appliances that are in the home or business.</li>
-                  <li>Use the plus or minus arrows to increase the number of units.</li>
-                  <li>Fill out ‘Watts’ - you can check this on the name plate of the applicance.</li>
-                  <li>Fill out ’hours’ - you can confirm this with the property occupants.</li>
-                  <li>Select ‘More appliances’ for more options or to enter an applicance not initially displayed.</li>
-                </ul>
-              </Typography>
-
+              <Box backgroundColor='' width={800} height='fit-content' >
+                <Typography variant='h4' fontWeight='bold' color={theme.palette.white.main} textAlign='left' mx={2} >
+                  Off-grid Load Calculator
+                </Typography>
+              </Box>
 
             </Box>
 
 
-            <Box width={800} height='fit-content' mx={8}>
 
-              <Box backgroundColor={theme.palette.primary.main} width={800} height='fit-content' px={4} pt={2} pb={1} sx={{ flexGrow: 1 }}>
-                <Grid container rowSpacing={0} columnSpacing={2}>
-                  <Grid xs={5.0} sx={{ textAlign: 'left', alignSelf: 'center' }}>
-                    <Typography color={theme.palette.white.main} fontWeight='bold' fontSize={16} lineHeight={1.0} variant='subtitle2'>APPLIANCE</Typography>
-                  </Grid>
+            <Box width='100vw' height='fit-content' sx={{
+              display: 'flex',
+              background: 'white',
+              justifyContent: 'center'
+            }}>
 
-                  <Grid xs={2} sx={{ textAlign: 'center', alignSelf: 'center' }}>
-                    <Typography color={theme.palette.white.main} fontWeight='bold' fontSize={16} lineHeight={1.0} variant='subtitle2'>QUANTITY</Typography>
-                  </Grid>
+              <Box maxWidth={800} height='fit-content' backgroundColor='' my={4} >
 
-                  <Grid xs={1.5} sx={{ textAlign: 'center', alignSelf: 'center' }}>
-                    <Typography color={theme.palette.white.main} fontWeight='bold' fontSize={16} lineHeight={1.0} variant='subtitle2'>WATTS</Typography>
-                  </Grid>
 
-                  <Grid xs={1.5} sx={{ textAlign: 'center', alignSelf: 'center' }}>
-                    <Typography color={theme.palette.white.main} fontWeight='bold' fontSize={16} lineHeight={1.0} variant='subtitle2'>HOURS<br></br> PER DAY</Typography>
-                  </Grid>
-                  <Grid xs={1.5} sx={{ textAlign: 'center', alignSelf: 'center' }}>
-                    <Typography color={theme.palette.white.main} fontWeight='bold' fontSize={16} lineHeight={1.0} variant='subtitle2'>WATT HRS PER DAY</Typography>
-                  </Grid>
-                  <Grid xs={0.5} sx={{ textAlign: 'center', alignSelf: 'center' }}>
-                    <Typography color={theme.palette.white.main} fontWeight='bold' fontSize={16} lineHeight={1.0} variant='subtitle2'></Typography>
-                  </Grid>
-                </Grid>
+                <Typography color={theme.palette.black.main} textAlign='left' fontSize={18} lineHeight={1.5} variant='subtitle2' mx={2} >
+                  We want to help you calculate the system that’s right for you.
+                  Fill out the table below to estimate energy usage.
+                  We’ve included some common household appliances.
+                  Try to account for everything.
+                  <br></br>
+                  <br></br>
+                  <strong>Section 1</strong>
+                  <ul>
+                    <li>Select the appliances that are in the home or business.</li>
+                    <li>Use the plus or minus arrows to increase the number of units.</li>
+                    <li>Fill out ‘Watts’ - you can check this on the name plate of the applicance.</li>
+                    <li>Fill out ’hours’ - you can confirm this with the property occupants.</li>
+                    <li>Select ‘More appliances’ for more options or to enter an applicance not initially displayed.</li>
+                  </ul>
+                  <br></br>
+                  <strong>Section 2</strong>
+                  <br></br>
+                  <br></br>
+                  Adjust the following values to meet the requirements of your project:
+                  <ul>
+                    <li>Percent of appliances on at once</li>
+                    <li>Mid winter effective sun hours</li>
+                    <li>Depth of discharge</li>
+                    <li>Days of Autonomy required</li>
+                  </ul>
+                </Typography>
               </Box>
+            </Box>
 
-              <Box backgroundColor={theme.palette.secondary.main} width='800px' height='3px' px={4} py={0} sx={{ flexGrow: 1 }}>
+
+            <Box width='100vw' height='fit-content' sx={{
+              display: 'flex',
+              background: '',
+              justifyContent: 'left',
+              overflow: 'scroll',
+              paddingLeft: 'calc(((100vw - 750px)/2)) '
+            }}>
+
+
+              <Box width={750} height='fit-content' >
+
+                <TableHeaders />
+
+                <Box backgroundColor={theme.palette.light.main} width={750} height='fit-content' px={4} py={2} sx={{ flexGrow: 1 }}>
+                  {
+                    Object.entries(applianceGroups).map(([groupName, appliances], index) => (
+                      <ApplianceGroup key={`${groupName}-${index}`} groupName={groupName} appliances={appliances} />
+                    ))
+                  }
+                </Box>
+
+                <Summary />
+
               </Box>
-
-
-              <Box backgroundColor={theme.palette.light.main} width='800px' height='fit-content' px={4} py={2} sx={{ flexGrow: 1 }}>
-                {
-                  Object.entries(applianceGroups).map(([groupName, appliances], index) => (
-                    <ApplianceGroup key={`${groupName}-${index}`} groupName={groupName} appliances={appliances} />
-                  ))
-                }
-              </Box>
-
-              <Summary />
-
             </Box>
 
           </Box>
 
+
+
+          <PdfDocumentMake />
+
+
+
         </DataProvider>
       </ThemeProvider >
+
+
     </>
   )
 }
+
+
+// <Box mb={8}>
+// <PDFDownloadLink document={<PdfDocument applianceGroups={applianceGroups} />} fileName="somename.pdf">
+//   {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
+// </PDFDownloadLink>
+
+// <PDFViewer width="1000" height="600" className="app" >
+//   <PdfDocument applianceGroups={applianceGroups} />
+// </PDFViewer>
+// </Box>
 
 export default App

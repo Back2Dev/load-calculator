@@ -27,7 +27,10 @@ const recalculateSummary = (currentState) => {
   const dailyUsage = Number((calculateDailyUsage(currentState) / 1000).toFixed(2)) // convert to kW's
   const continuousLoad = Number((totalLoad * (currentState.percentActive / 100)).toFixed(2))
   const usableBattery = Number((dailyUsage * currentState.doa).toFixed(2))
-  const nameplate = Number((usableBattery / currentState.dod).toFixed(2))
+
+  const depthOfDischarge = (100 - currentState.dod) / 100
+
+  const nameplate = Number((usableBattery / depthOfDischarge).toFixed(2))
   const minSolar = Number((dailyUsage / currentState.winterSunHours).toFixed(2))
   return { ...currentState, totalLoad, dailyUsage, continuousLoad, usableBattery, nameplate, minSolar }
 }
@@ -116,11 +119,11 @@ export const DataProvider = ({ children }) => {
 
     state[variableName] = value
 
-    const { dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar } = recalculateSummary(state)
+    const { dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar, dod } = recalculateSummary(state)
 
     dispatch({
       type: ACTION.UPDATE_CALCULATION_VARIABLE,
-      payload: { ...state, dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar },
+      payload: { ...state, dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar, dod },
     })
 
   }

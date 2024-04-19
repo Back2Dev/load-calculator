@@ -85,7 +85,7 @@ const SummaryRow = ({ description, value, suffix, keyName, defaultValue, editabl
 
             <Grid xs={1}>
                 {
-                    editable
+                    (editable && defaultValue && (defaultValue !== value))
                         ? <ReplayCircleFilledIcon
                             onClick={resetValue}
                             sx={{

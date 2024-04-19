@@ -7,10 +7,10 @@ export const initialState = {
   dailyUsage: 0,
   continuousLoad: 0,
   percentActive: 80, // editable - percentage of appliances used at one time
-  doa: 1, // editable -
+  doa: 2, // editable -
   winterSunHours: 2, // editable -
   usableBattery: 0,
-  dod: 0.8,
+  dod: 20,
   nameplate: 0,
   minSolar: 0,
 }

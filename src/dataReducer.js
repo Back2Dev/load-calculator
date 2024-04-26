@@ -10,7 +10,7 @@ export const initialState = {
   doa: 2, // editable -
   winterSunHours: 2, // editable -
   usableBattery: 0,
-  dod: 20,
+  dod: 80,
   nameplate: 0,
   minSolar: 0,
 }

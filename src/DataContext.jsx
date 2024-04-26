@@ -28,7 +28,7 @@ const recalculateSummary = (currentState) => {
   const continuousLoad = Number((totalLoad * (currentState.percentActive / 100)).toFixed(2))
   const usableBattery = Number((dailyUsage * currentState.doa).toFixed(2))
 
-  const depthOfDischarge = (100 - currentState.dod) / 100
+  const depthOfDischarge = (currentState.dod / 100)
 
   const nameplate = Number((usableBattery / depthOfDischarge).toFixed(2))
   const minSolar = Number((dailyUsage / currentState.winterSunHours).toFixed(2))

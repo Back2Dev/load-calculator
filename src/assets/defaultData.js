@@ -33,7 +33,7 @@ export const defaultData = {
       icon: 'KitchenToaster',
     },
     {
-      name: 'Fridge large',
+      name: 'Fridge - Large',
       quantity: 0,
       watts: 200,
       hours: 4,
@@ -133,7 +133,7 @@ export const defaultData = {
       icon: 'BathLaundryHairdryer',
     },
     {
-      name: 'Elect Towel rail',
+      name: 'Elect towel rail',
       quantity: 0,
       watts: 1000,
       hours: 0.5,
@@ -141,7 +141,7 @@ export const defaultData = {
       icon: 'BathLaundryHeatedTowelRail',
     },
     {
-      name: 'Radiator/heater',
+      name: 'Radiator / Heater',
       quantity: 0,
       watts: 2000,
       hours: 0.5,
@@ -194,7 +194,7 @@ export const defaultData = {
       icon: 'HouseholdLights',
     },
     {
-      name: 'Out door flood lights Large',
+      name: 'Out door flood lights - Large',
       quantity: 0,
       watts: 300,
       hours: 2,
@@ -228,7 +228,7 @@ export const defaultData = {
   ],
   Utilities: [
     {
-      name: 'Electric Hot Water',
+      name: 'Electric hot water',
       quantity: 0,
       watts: 3000,
       hours: 3,
@@ -236,7 +236,7 @@ export const defaultData = {
       icon: 'UtilityHotWaterService',
     },
     {
-      name: 'Air conditioning (reverse cycle)',
+      name: 'Air conditioning - Reverse cycle',
       quantity: 0,
       watts: 4000,
       hours: 3,
@@ -252,7 +252,7 @@ export const defaultData = {
       icon: 'HouseholdVaccumm',
     },
     {
-      name: 'Pool Heating',
+      name: 'Pool heating',
       quantity: 0,
       watts: 300,
       hours: 12,
@@ -260,7 +260,7 @@ export const defaultData = {
       icon: 'UtilitySwimmingPool',
     },
     {
-      name: 'Pool Pump',
+      name: 'Pool pump',
       quantity: 0,
       watts: 2500,
       hours: 6,
@@ -328,7 +328,7 @@ export const defaultData = {
   ],
   'Out door': [
     {
-      name: 'Pond Pump',
+      name: 'Pond pump',
       quantity: 0,
       watts: 50,
       hours: 24,
@@ -336,7 +336,7 @@ export const defaultData = {
       icon: 'OutdoorPondPump',
     },
     {
-      name: 'Patio Heater',
+      name: 'Patio heater',
       quantity: 0,
       watts: 2800,
       hours: 2,
@@ -344,7 +344,7 @@ export const defaultData = {
       icon: 'OutdoorPatioHeaterFreestanding',
     },
     {
-      name: 'Tennis Court Lights',
+      name: 'Tennis court lights',
       quantity: 0,
       watts: 200,
       hours: 4,

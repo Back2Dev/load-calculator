@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 // import reactLogo from './assets/react.svg'
 import './App.css'
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import { styled } from '@mui/material/styles';
 import { TextField, Box, Paper, Typography, TableContainer, Table, TableBody, TableHead, TableRow, TableCell } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -25,6 +27,7 @@ import { PDFDownloadLink } from '@react-pdf/renderer'
 import { PDFViewer } from '@react-pdf/renderer';
 import PdfDocument from './components/PdfDocument';
 import PdfDocumentMake from './components/PdfDocumentMake';
+
 
 
 
@@ -62,6 +65,14 @@ const add = (a, b) => a + b
 
 function App() {
   const { applianceGroups } = useData()
+
+  const applianceList = () => {
+    return Object.entries(applianceGroups).map(([groupName, appliances]) => {
+      return appliances.filter(({ quantity }) => quantity > 0)
+    }).flat()
+  }
+
+  const justifyTable = useMediaQuery('(max-width:750px)');
 
   return (
     <>
@@ -120,21 +131,24 @@ function App() {
                   <ul>
                     <li>Percent of appliances on at once</li>
                     <li>Mid winter effective sun hours</li>
-                    <li>Depth of discharge</li>
-                    <li>Days of Autonomy required</li>
+                    <li>Nominated battery depth of discharge</li>
+                    <li>Nominated days of autonomy</li>
                   </ul>
                 </Typography>
               </Box>
             </Box>
 
 
-            <Box width='100vw' height='fit-content' sx={{
-              display: 'flex',
-              background: '',
-              justifyContent: 'left',
-              overflow: 'scroll',
-              paddingLeft: 'calc(((100vw - 750px)/2)) '
-            }}>
+            <Box
+              width='100vw'
+              height='fit-content'
+              sx={{
+                display: 'flex',
+                background: '',
+                justifyContent: justifyTable ? 'left' : 'center',
+                overflowX: 'auto',
+                overflowY: 'hidden'
+              }}>
 
 
               <Box width={750} height='fit-content' >
@@ -154,11 +168,11 @@ function App() {
               </Box>
             </Box>
 
+
+            <PdfDocumentMake />
+
           </Box>
 
-
-
-          <PdfDocumentMake />
 
 
 

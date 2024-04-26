@@ -43,7 +43,7 @@ const Summary = () => {
                     description='Peak load (total load)'
                     value={totalLoad}
                     keyName={'totalLoad'}
-                    suffix='kWh'
+                    suffix='kW'
                 />
 
                 <RowSpacer />
@@ -85,16 +85,16 @@ const Summary = () => {
                 <RowSpacer />
 
                 <SummaryRow
-                    description='Depth of discharge'
+                    description='Nominated battery depth of discharge (DoD)'
                     value={dod}
                     keyName={'dod'}
                     suffix={'%'}
-                    defaultValue={20}
+                    defaultValue={80}
                     editable={true}
                 />
 
                 <SummaryRow
-                    description='Days of Autonomy required'
+                    description='Nominated days of autonomy (DoA)'
                     value={doa}
                     keyName={'doa'}
                     suffix={doa > 1 ? 'days' : 'day'}

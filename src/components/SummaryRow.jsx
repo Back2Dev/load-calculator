@@ -15,10 +15,10 @@ const SummaryRow = ({ description, value, suffix, keyName, defaultValue, editabl
     const { updateCalculationVariable } = useData()
 
     const handleUpdate = (e, variableName) => {
-        const value = Number(e.target.value)
+        const value = e.target.value.replace(/[^\d.]/g, "");
         updateCalculationVariable(variableName, value)
-
     }
+
 
     const theme = useTheme()
 
@@ -65,7 +65,7 @@ const SummaryRow = ({ description, value, suffix, keyName, defaultValue, editabl
                             textAlign: 'right',
                         },
                         "& .MuiOutlinedInput-notchedOutline": {
-                            border: 'none'
+                            border: (editable && ((value === '') || (value === 0))) ? '3px solid red' : 'none'
                         }
                     }}
                     InputProps={{

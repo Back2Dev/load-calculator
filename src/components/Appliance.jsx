@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TextField } from '@mui/material';
+import { TextField, useMediaQuery } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import Stack from '@mui/material/Stack';
 
@@ -191,6 +191,8 @@ const Appliance = ({ groupName, applianceIndex }) => {
     }
 
     const theme = useTheme();
+
+    const bigScreen = useMediaQuery('(min-width:750px)');
 
     return (
 

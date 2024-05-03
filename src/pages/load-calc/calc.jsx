@@ -6,6 +6,7 @@ import ApplianceGroup from './components/ApplianceGroup'
 import Summary from './components/Summary'
 import TableHeaders from './components/TableHeaders'
 import PdfDocumentMake from './components/PdfDocumentMake'
+import SubmitButton from './components/SubmitButton'
 import './styles.css'
 
 const Calc = ({ applianceGroups = {} }) => {
@@ -148,6 +149,7 @@ const Calc = ({ applianceGroups = {} }) => {
           </Box>
         </Box>
 
+        <SubmitButton />
         <PdfDocumentMake />
       </Box>
     </>

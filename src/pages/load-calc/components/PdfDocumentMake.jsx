@@ -1,12 +1,9 @@
 import React from 'react'
-
 import { Button, Box } from '@mui/material'
-
-import { useData } from '../DataContext'
-
 import pdfMake from 'pdfmake/build/pdfmake'
 import * as pdfFonts from './vfs_fontes'
-import { BorderColor } from '@mui/icons-material'
+import { useData } from '../DataContext'
+
 pdfMake.vfs = pdfFonts.default
 
 const styles = {

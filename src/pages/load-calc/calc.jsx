@@ -2,12 +2,14 @@ import React from 'react'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { Box, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import dbg from 'debug'
 import ApplianceGroup from './components/ApplianceGroup'
 import Summary from './components/Summary'
 import TableHeaders from './components/TableHeaders'
 import PdfDocumentMake from './components/PdfDocumentMake'
 import SubmitButton from './components/SubmitButton'
 import './styles.css'
+const debug = dbg('app:calc')
 
 const Calc = ({ applianceGroups = {} }) => {
   const theme = useTheme()

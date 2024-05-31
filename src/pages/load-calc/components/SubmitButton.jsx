@@ -24,12 +24,13 @@ const SubmitButton = () => {
       const body = {
         form: 'dpa-load-calc',
         formData,
+        surveySlug: 'dpa-load-calc-v1',
       }
       const response = await axios.post('https://dpa.requestcatcher.com/test', body, {
         headers: {
           'Content-Type': 'application/json',
+          authorization: 'Bearer 95cb-dfc2-64ab-435f-9d14-e5cd-92a9-6d6a-b74e-4130',
         },
-        withCredentials: false,
       })
       if (response.status !== 200)
         return { status: 'failed', message: response.data[0].message }

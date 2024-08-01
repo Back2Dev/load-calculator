@@ -75,48 +75,6 @@ import {
   WorkshopWelder,
 } from './icons'
 
-/**
-
-
-const iconLookup = {
-    'KitchenStoveTop': KitchenStoveTop,
-    'KitchenOven': KitchenOven,
-    'KitchenKettle': KitchenKettle,
-    'KitchenToaster': KitchenToaster,
-    'KitchenSmallFridge': KitchenSmallFridge,
-    'KitchenFreezer': KitchenFreezer,
-    'KitchenMicrowave': KitchenMicrowave,
-    'KitchenDishwasher': KitchenDishwasher,
-    'KitchenCoffeeMachine': KitchenCoffeeMachine,
-    'KitchenRangehood': KitchenRangehood,
-    'KitchenAirFryer': KitchenAirFryer,
-    'BathLaundryClothesDryer': BathLaundryClothesDryer,
-    'BathLaundryWashingMachine': BathLaundryWashingMachine,
-    'BathLaundryIron': BathLaundryIron,
-    'BathLaundryHairdryer': BathLaundryHairdryer,
-    'BathLaundryHeatedTowelRail': BathLaundryHeatedTowelRail,
-    'BathLaundryRadiator': BathLaundryRadiator,
-    'OfficeTV': OfficeTv,
-    'OfficeComputer': OfficeComputer,
-    'OfficeModem': OfficeModem,
-    'OfficeGamingConsole': OfficeGamingConsole,
-    'UtilityOutdoorLighting': UtilityOutdoorLighting,
-    'UtilitySlabHeating': UtilitySlabHeating,
-    'UtilityHotWaterService': UtilityHotWaterService,
-    'UtilitySwimmingPool': UtilitySwimmingPool,
-    'UtilityPump': UtilityPump,
-    'WorkshopCompressor': WorkshopCompressor,
-    'WorkshopDrillPress': WorkshopDrillPress,
-    'WorkshopWelder': WorkshopWelder,
-    'WorkshopBatteryCharger': WorkshopBatteryCharger,
-    'WorkshopBenchSaw': WorkshopBenchSaw,
-    'OutdoorPondPump': OutdoorPondPump,
-    'OutdoorPatioHeaterFreestanding': OutdoorPatioHeaterFreestanding,
-    'OutdoorTennisCourtLight': OutdoorTennisCourtLight,
-    'OutdoorChainsaw': OutdoorChainsaw,
-}
- */
-
 const iconLookup = {
   BathLaundryClothesDryer: BathLaundryClothesDryer,
   BathLaundryExhaustFan: BathLaundryExhaustFan,
@@ -176,6 +134,14 @@ const iconLookup = {
   WorkshopWelder: WorkshopWelder,
 }
 
+const slugify = (text) => {
+  if (!text || typeof text !== 'string') return 'no-name'
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, '-')
+}
+
 const Appliance = ({ groupName, applianceIndex }) => {
   const {
     applianceGroups,
@@ -185,9 +151,9 @@ const Appliance = ({ groupName, applianceIndex }) => {
     resetAppliance,
   } = useData()
 
-  const { name, quantity, watts, hours, total, id, icon } =
+  const { name, quantity, watts, hours, total, icon } =
     applianceGroups[groupName][applianceIndex]
-
+  const id = slugify(applianceGroups[groupName][applianceIndex].name)
   const handleUpdate = (e, key) => {
     // const value = Number(e.target.value)
     const value = e.target.value.replace(/[^\d.]/g, '')
@@ -206,7 +172,6 @@ const Appliance = ({ groupName, applianceIndex }) => {
           size="small"
           margin="none"
           value={name}
-          data-cy={`${id}-qty`}
           fullWidth
           sx={{
             border: 0,

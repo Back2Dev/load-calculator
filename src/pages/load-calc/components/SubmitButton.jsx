@@ -36,10 +36,8 @@ const SubmitButton = () => {
         {
           headers: {
             'Content-Type': 'application/json',
-            Authorization: 'Bearer 95cb-dfc2-64ab-435f-9d14-e5cd-92a9-6d6a-b74e-4130',
-            Accept: 'application/json',
+            Authorization: 'Bearer ' + process.env.API_KEY,
           },
-          withCredentials: false,
         },
       )
       if (response.status !== 200)

@@ -20,7 +20,7 @@ const Calc = ({ applianceGroups = {} }) => {
     <>
       <Box
         backgroundColor={theme.palette.white.main}
-        width="100vw"
+        width="100vw" // TODO: Don't use vw
         height="fit-content"
         pb={6}
       >
@@ -50,7 +50,7 @@ const Calc = ({ applianceGroups = {} }) => {
         </Box>
 
         <Box
-          width="100vw"
+          width="100vw" // TODO: Don't use vw
           height="fit-content"
           sx={{
             display: 'flex',

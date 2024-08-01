@@ -17,6 +17,9 @@
 - Add company name to banner (right)
 - List items (`<ul>`) are rendering in white
 - Typography is different from https://dpasolar.com.au/app/dev/
+- src/index.css references `font-family: 'Montserrat';`
+- Don't use 100vw to force width
+- Don't use 100vh to force height
 - "HOURS PER DAY" is cramped, as is "WATTS PER DAY"
 - Column headings should be repeated on each table
 - For Bullet points, use `<ul>`, for numbers, use `<ol>`

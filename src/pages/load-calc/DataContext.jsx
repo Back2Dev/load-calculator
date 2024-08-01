@@ -28,7 +28,7 @@ const recalculateSummary = (currentState) => {
   const totalLoad = Number((calculateTotalLoad(currentState) / 1000).toFixed(2))
   const dailyUsage = Number((calculateDailyUsage(currentState) / 1000).toFixed(2)) // convert to kW's
   const continuousLoad = Number(
-    (totalLoad * (currentState.percentActive / 100)).toFixed(2)
+    (totalLoad * (currentState.percentActive / 100)).toFixed(2),
   )
   const usableBattery = Number((dailyUsage * currentState.doa).toFixed(2))
 
@@ -62,6 +62,9 @@ export const DataProvider = ({ children }) => {
     const { dailyUsage, totalLoad, continuousLoad, usableBattery, nameplate, minSolar } =
       recalculateSummary(state)
 
+    // TODO: This passes around ALL of the data every time.
+    // While it's not broken, it's not very efficient
+    // The ideal way is to just pass the element that has changed
     dispatch({
       type: ACTION.ADD_APPLIANCE,
       payload: {

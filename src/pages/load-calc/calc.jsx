@@ -9,6 +9,7 @@ import TableHeaders from './components/TableHeaders'
 import PdfDocumentMake from './components/PdfDocumentMake'
 import SubmitButton from './components/SubmitButton'
 import './styles.css'
+// import logo from '.src/assets/icons/dpa-logo.png'; 
 const debug = dbg('app:calc')
 
 const Calc = ({ applianceGroups = {} }) => {
@@ -37,6 +38,7 @@ const Calc = ({ applianceGroups = {} }) => {
           }}
         >
           <Box backgroundColor="" width={800} height="fit-content">
+          {/* <img src={logo} alt="DPA Logo" /> */}
             <Typography
               variant="h4"
               fontWeight="bold"
@@ -44,7 +46,7 @@ const Calc = ({ applianceGroups = {} }) => {
               textAlign="left"
               mx={2}
             >
-              Off-grid Load Calculator
+              Off-Grid Load Calculator
             </Typography>
           </Box>
         </Box>
@@ -69,6 +71,7 @@ const Calc = ({ applianceGroups = {} }) => {
             >
               We want to help you calculate the right system. Fill the table below to estimate energy usage. Try to account for everything. We already included common household appliances.
             </Typography>
+
             <Typography
               color={theme.palette.black.main}
               textAlign="left"
@@ -79,8 +82,7 @@ const Calc = ({ applianceGroups = {} }) => {
               mx={2}
             >
               Section 1
-            </Typography>
-            <ul>
+            <ol>
               <li>Select the electrical appliances that are in the home or business.</li>
               <li>Use the plus or minus arrows to increase the number of units.</li>
               <li>
@@ -90,11 +92,12 @@ const Calc = ({ applianceGroups = {} }) => {
                 Fill out ’hours’ - you can confirm this with the property occupants.
               </li>
               <li>
-                Select ‘More appliances’ for more options or to enter an appliance not
-                initially displayed.
+                Select ‘More appliances’ for more options.
               </li>
-            </ul>
-            <h3>Section 2</h3>
+            </ol>
+            </Typography>
+
+            
             <Typography
               color={theme.palette.black.main}
               textAlign="left"
@@ -103,14 +106,16 @@ const Calc = ({ applianceGroups = {} }) => {
               // variant="subtitle2"
               mx={2}
             >
+              <h3>Section 2</h3>
               Adjust the following values to meet the requirements of your project:
-            </Typography>
-            <ul>
+            
+            <ol>
               <li>Percent of appliances on at once</li>
               <li>Mid winter effective sun hours</li>
               <li>Nominated battery depth of discharge</li>
               <li>Nominated days of autonomy</li>
-            </ul>
+            </ol>
+            </Typography>
           </Box>
         </Box>
 

@@ -164,19 +164,6 @@ const PdfDocumentMake = () => {
     },
   }
 
-  return (
-    <Box my={8}>
-      <Button
-        variant="contained"
-        onClick={() =>
-          pdfMake.createPdf(docDefinition).download('DPA Solar Offgrid Power Load.pdf')
-        }
-        size="large"
-      >
-        Download
-      </Button>
-    </Box>
-  )
 }
 
 export default PdfDocumentMake

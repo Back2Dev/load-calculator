@@ -1,7 +1,7 @@
 export const defaultData = {
   Kitchen: [
     {
-      name: 'Electric stove top',
+      name: 'Electric Stovetop',
       quantity: 0,
       watts: 1000,
       hours: 0.5,
@@ -9,7 +9,7 @@ export const defaultData = {
       icon: 'KitchenStoveTop',
     },
     {
-      name: 'Electric oven',
+      name: 'Electric Oven',
       quantity: 0,
       watts: 4000,
       hours: 0.5,
@@ -41,7 +41,7 @@ export const defaultData = {
       icon: 'KitchenLargeFridge',
     },
     {
-      name: 'Bar fridge',
+      name: 'Bar Fridge',
       quantity: 0,
       watts: 65,
       hours: 4,
@@ -73,7 +73,7 @@ export const defaultData = {
       icon: 'KitchenDishwasher',
     },
     {
-      name: 'Coffee machine',
+      name: 'Coffee Machine',
       quantity: 0,
       watts: 1200,
       hours: 0.2,
@@ -89,7 +89,7 @@ export const defaultData = {
       icon: 'KitchenRangehood',
     },
     {
-      name: 'Air fryer',
+      name: 'Air Fryer',
       quantity: 0,
       watts: 2000,
       hours: 0.5,
@@ -107,7 +107,7 @@ export const defaultData = {
       icon: 'BathLaundryClothesDryer',
     },
     {
-      name: 'Washing machine',
+      name: 'Washing Machine',
       quantity: 0,
       watts: 500,
       hours: 1,
@@ -125,7 +125,7 @@ export const defaultData = {
   ],
   Bathroom: [
     {
-      name: 'Hair dryer',
+      name: 'Hair Dryer',
       quantity: 0,
       watts: 1000,
       hours: 0.1,
@@ -133,7 +133,7 @@ export const defaultData = {
       icon: 'BathLaundryHairdryer',
     },
     {
-      name: 'Elect towel rail',
+      name: 'Electric Towel Rail',
       quantity: 0,
       watts: 1000,
       hours: 0.5,
@@ -141,7 +141,7 @@ export const defaultData = {
       icon: 'BathLaundryHeatedTowelRail',
     },
     {
-      name: 'Radiator / Heater',
+      name: 'Radiator/Heater',
       quantity: 0,
       watts: 2000,
       hours: 0.5,
@@ -167,7 +167,7 @@ export const defaultData = {
       icon: 'OfficeComputer',
     },
     {
-      name: 'Internet / Modem',
+      name: 'Internet/Modem',
       quantity: 0,
       watts: 20,
       hours: 4,
@@ -175,7 +175,7 @@ export const defaultData = {
       icon: 'OfficeModem',
     },
     {
-      name: 'Gaming console',
+      name: 'Gaming Console',
       quantity: 0,
       watts: 200,
       hours: 2,
@@ -194,7 +194,7 @@ export const defaultData = {
       icon: 'HouseholdLights',
     },
     {
-      name: 'Out door flood lights - Large',
+      name: 'Outdoor Floodlights - Large',
       quantity: 0,
       watts: 300,
       hours: 2,
@@ -202,7 +202,7 @@ export const defaultData = {
       icon: 'UtilityOutdoorLighting',
     },
     {
-      name: 'Slab heating',
+      name: 'Slab Heating',
       quantity: 0,
       watts: 200,
       hours: 4,
@@ -210,7 +210,7 @@ export const defaultData = {
       icon: 'UtilitySlabHeating',
     },
     {
-      name: 'Bar or oil heaters',
+      name: 'Bar/Oil Heater',
       quantity: 0,
       watts: 2400,
       hours: 2,
@@ -218,7 +218,7 @@ export const defaultData = {
       icon: 'HouseholdBarOilHeater',
     },
     {
-      name: 'Ceiling fans',
+      name: 'Ceiling Fan',
       quantity: 0,
       watts: 75,
       hours: 2,
@@ -228,7 +228,7 @@ export const defaultData = {
   ],
   Utilities: [
     {
-      name: 'Electric hot water',
+      name: 'Electric Hot Water',
       quantity: 0,
       watts: 3000,
       hours: 3,
@@ -236,7 +236,7 @@ export const defaultData = {
       icon: 'UtilityHotWaterService',
     },
     {
-      name: 'Air conditioning - Reverse cycle',
+      name: 'Air Conditioning - Reverse Cycle',
       quantity: 0,
       watts: 4000,
       hours: 3,
@@ -244,7 +244,7 @@ export const defaultData = {
       icon: 'HouseholdAirCon',
     },
     {
-      name: 'Vaccum cleaner',
+      name: 'Vaccum Cleaner',
       quantity: 0,
       watts: 800,
       hours: 1,
@@ -252,7 +252,7 @@ export const defaultData = {
       icon: 'HouseholdVaccumm',
     },
     {
-      name: 'Pool heating',
+      name: 'Pool Heating',
       quantity: 0,
       watts: 300,
       hours: 12,
@@ -260,7 +260,7 @@ export const defaultData = {
       icon: 'UtilitySwimmingPool',
     },
     {
-      name: 'Pool pump',
+      name: 'Pool Pump',
       quantity: 0,
       watts: 2500,
       hours: 6,
@@ -268,7 +268,7 @@ export const defaultData = {
       icon: 'UtilityPump',
     },
     {
-      name: 'Septic pump',
+      name: 'Septic Pump',
       quantity: 0,
       watts: 700,
       hours: 1,
@@ -276,7 +276,7 @@ export const defaultData = {
       icon: 'UtilityPump',
     },
     {
-      name: 'Water pump',
+      name: 'Water Pump',
       quantity: 0,
       watts: 150,
       hours: 4,
@@ -294,7 +294,7 @@ export const defaultData = {
       icon: 'WorkshopCompressor',
     },
     {
-      name: 'Drill press',
+      name: 'Drill Press',
       quantity: 0,
       watts: 500,
       hours: 0.2,
@@ -302,7 +302,7 @@ export const defaultData = {
       icon: 'WorkshopDrillPress',
     },
     {
-      name: 'Welder small',
+      name: 'Welder - Small',
       quantity: 0,
       watts: 3000,
       hours: 0.2,
@@ -310,7 +310,7 @@ export const defaultData = {
       icon: 'WorkshopWelder',
     },
     {
-      name: 'Battery charger',
+      name: 'Battery Charger',
       quantity: 0,
       watts: 150,
       hours: 12,
@@ -318,7 +318,7 @@ export const defaultData = {
       icon: 'WorkshopBatteryCharger',
     },
     {
-      name: 'Saw bench',
+      name: 'Saw Bench',
       quantity: 0,
       watts: 1400,
       hours: 0.2,
@@ -326,9 +326,9 @@ export const defaultData = {
       icon: 'WorkshopBenchSaw',
     },
   ],
-  'Out door': [
+  'Outdoor': [
     {
-      name: 'Pond pump',
+      name: 'Pond Pump',
       quantity: 0,
       watts: 50,
       hours: 24,
@@ -336,7 +336,7 @@ export const defaultData = {
       icon: 'OutdoorPondPump',
     },
     {
-      name: 'Patio heater',
+      name: 'Patio Heater',
       quantity: 0,
       watts: 2800,
       hours: 2,
@@ -344,7 +344,7 @@ export const defaultData = {
       icon: 'OutdoorPatioHeaterFreestanding',
     },
     {
-      name: 'Tennis court lights',
+      name: 'Tennis Court Lights',
       quantity: 0,
       watts: 200,
       hours: 4,
@@ -352,7 +352,7 @@ export const defaultData = {
       icon: 'OutdoorTennisCourtLight',
     },
     {
-      name: 'Electric chainsaw',
+      name: 'Electric Chainsaw',
       quantity: 0,
       watts: 1200,
       hours: 1,

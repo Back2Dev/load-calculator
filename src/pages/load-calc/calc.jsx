@@ -19,12 +19,14 @@ const Calc = ({ applianceGroups = {} }) => {
 
   return (
     <>
+    {/* Header */}
       <Box
         backgroundColor={theme.palette.white.main}
         width="100vw" // TODO: Don't use vw
         height="fit-content"
         pb={6}
       >
+        {/* Blue banner */}
         <Box
           width="max-width"
           minHeight="50px"
@@ -51,6 +53,7 @@ const Calc = ({ applianceGroups = {} }) => {
           </Box>
         </Box>
 
+        {/* First instructions */}
         <Box
           width="100vw" // TODO: Don't use vw
           height="fit-content"
@@ -81,7 +84,6 @@ const Calc = ({ applianceGroups = {} }) => {
               component="h3"
               mx={2}
             >
-              Section 1
             <ol>
               <li>Select the electrical appliances that are in the home or business.</li>
               <li>Use the plus or minus arrows to increase the number of units.</li>
@@ -96,29 +98,10 @@ const Calc = ({ applianceGroups = {} }) => {
               </li>
             </ol>
             </Typography>
-
-            
-            <Typography
-              color={theme.palette.black.main}
-              textAlign="left"
-              fontSize={18}
-              lineHeight={1.5}
-              // variant="subtitle2"
-              mx={2}
-            >
-              <h3>Section 2</h3>
-              Adjust the following values to meet the requirements of your project:
-            
-            <ol>
-              <li>Percent of appliances on at once</li>
-              <li>Mid winter effective sun hours</li>
-              <li>Nominated battery depth of discharge</li>
-              <li>Nominated days of autonomy</li>
-            </ol>
-            </Typography>
           </Box>
         </Box>
-
+        
+        {/* Table section */}
         <Box
           width="100vw"
           height="fit-content"
@@ -141,6 +124,7 @@ const Calc = ({ applianceGroups = {} }) => {
               py={2}
               sx={{ flexGrow: 1 }}
             >
+              {/* Rows */}
               {Object.entries(applianceGroups).map(([groupName, appliances], index) => (
                 <ApplianceGroup
                   key={`${groupName}-${index}`}
@@ -150,6 +134,22 @@ const Calc = ({ applianceGroups = {} }) => {
               ))}
             </Box>
 
+            {/* Second instructions */}
+            <Typography
+              color={theme.palette.black.main}
+              textAlign="left"
+              fontSize={18}
+              lineHeight={1.5}
+              mx={2}
+            >
+              Adjust the following values to meet the requirements of your project:
+            <ol>
+              <li>Percent of appliances on at once</li>
+              <li>Mid winter effective sun hours</li>
+              <li>Nominated battery depth of discharge</li>
+              <li>Nominated days of autonomy</li>
+            </ol>
+            </Typography>
             <Summary />
           </Box>
         </Box>

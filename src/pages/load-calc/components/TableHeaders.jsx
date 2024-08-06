@@ -63,7 +63,7 @@ const TableHeaders = () => {
               lineHeight={1.0}
               variant="subtitle2"
             >
-              HOURS<br></br> PER DAY
+              H/DAY
             </Typography>
           </Grid>
           <Grid xs={1.5} sx={{ textAlign: 'center', alignSelf: 'center' }}>
@@ -74,7 +74,7 @@ const TableHeaders = () => {
               lineHeight={1.0}
               variant="subtitle2"
             >
-              WATT HRS PER DAY
+              WATT/H/DAY
             </Typography>
           </Grid>
           <Grid xs={0.5} sx={{ textAlign: 'center', alignSelf: 'center' }}>

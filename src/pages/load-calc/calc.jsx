@@ -67,9 +67,7 @@ const Calc = ({ applianceGroups = {} }) => {
               // variant="subtitle2"
               mx={2}
             >
-              We want to help you calculate the system that’s right for you. Fill out the
-              table below to estimate energy usage. We’ve included some common household
-              appliances. Try to account for everything.
+              We want to help you calculate the right system. Fill the table below to estimate energy usage. Try to account for everything. We already included common household appliances.
             </Typography>
             <Typography
               color={theme.palette.black.main}

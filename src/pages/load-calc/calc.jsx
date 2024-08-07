@@ -11,7 +11,6 @@ import ContactForm from './components/ContactForm'
 import ContactHeader from './components/ContactHeader'
 import SubmitButton from './components/SubmitButton'
 import './styles.css'
-// import logo from '.src/assets/icons/dpa-logo.png';
 const debug = dbg('app:calc')
 
 const Calc = ({ applianceGroups = {} }) => {
@@ -23,51 +22,42 @@ const Calc = ({ applianceGroups = {} }) => {
   return (
     <>
       {/* Body box */}
-      <Box
-        backgroundColor={theme.palette.white.main}
-        width="100vw" // TODO: Don't use vw
-        height="fit-content"
-        pb={6}
-      >
+      <Box backgroundColor={theme.palette.white.main} pb={3}>
         {/* Blue banner */}
         <Box
-          // width="max-width"
           minHeight="50px"
-          height="fit-content"
           pt={3}
           pb={2}
           sx={{
             display: 'flex',
             background: 'linear-gradient(to right, #005288 , #00A4E4)',
             justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-          {/* <Box backgroundColor="" width={800} height="fit-content"> */}
-          <Box height="fit-content">
-            {/* <img src={logo} alt="DPA Logo" /> */}
-            <Typography
-              variant="h4"
-              fontWeight="bold"
-              color={theme.palette.white.main}
-              textAlign="left"
-              mx={2}
-            >
-              Off-Grid Load Calculator
-            </Typography>
-          </Box>
+          <img
+            src="/assets/icons/dpa-logo.png"
+            alt="DPA Logo"
+            style={{ marginRight: '2rem' }}
+          />
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            color={theme.palette.white.main}
+            textAlign="left"
+          >
+            Off-Grid Load Calculator
+          </Typography>
         </Box>
 
         {/* Appliance Instructions */}
         <Box
-          // width="100vw" // TODO: Don't use vw
-          height="fit-content"
+          maxWidth="800px"
           sx={{
             display: 'flex',
-            //background: 'white',
-            justifyContent: 'center',
+            margin: 'auto',
           }}
         >
-          {/* </Box> <Box maxWidth={800} height="fit-content" my={4}> */}
           <Box height="fit-content" my={4}>
             <Typography
               color={theme.palette.black.main}
@@ -76,9 +66,10 @@ const Calc = ({ applianceGroups = {} }) => {
               lineHeight={1.5}
               mx={2}
             >
-              We want to help you calculate the right system. Fill the table below to
-              estimate energy usage. Try to account for everything. We already included
-              common household appliances.
+              We want to help you build the right system. Our calculator is divided in 3
+              sections: Appliances, Consumption, and Contact. Fill the tables below to
+              estimate your energy usage - try to account for everything. We already
+              included common household appliances.
             </Typography>
 
             <Typography
@@ -110,22 +101,21 @@ const Calc = ({ applianceGroups = {} }) => {
 
         {/* Appliance table */}
         <Box
-          // width="100vw"
           height="fit-content"
+          maxWidth="900px"
           sx={{
             display: 'flex',
             justifyContent: justifyTable ? 'left' : 'center',
             overflowX: 'auto',
             overflowY: 'hidden',
+            margin: 'auto',
           }}
         >
-          {/* <Box width={750} height="fit-content"> */}
           <Box height="fit-content">
             <TableHeaders />
 
             <Box
               backgroundColor={theme.palette.light.main}
-              // width={750}
               height="fit-content"
               px={4}
               py={2}
@@ -144,25 +134,23 @@ const Calc = ({ applianceGroups = {} }) => {
         </Box>
 
         {/* Summary instructions */}
-
         {/* Summary table */}
         <Box
-          // width="100vw"
           height="fit-content"
+          maxWidth="900px"
           sx={{
             display: 'flex',
             justifyContent: justifyTable ? 'left' : 'center',
             overflowX: 'auto',
             overflowY: 'hidden',
+            margin: 'auto',
           }}
         >
-          {/* <Box width={750} height="fit-content"> */}
           <Box height="fit-content">
             <SummaryHeader />
 
             <Box
               backgroundColor={theme.palette.light.main}
-              // width={750}
               height="fit-content"
               px={4}
               py={1}
@@ -175,11 +163,10 @@ const Calc = ({ applianceGroups = {} }) => {
 
         {/* Contact Form */}
         <Box
-          // width="100vw" // TODO: Don't use vw
-          height="fit-content"
+          maxWidth="800px"
           sx={{
             display: 'flex',
-            justifyContent: 'center',
+            margin: 'auto',
           }}
         >
           {/* <Box maxWidth={800} height="fit-content" my={4}> */}
@@ -188,22 +175,21 @@ const Calc = ({ applianceGroups = {} }) => {
 
         {/* Contact Table */}
         <Box
-          // width="100vw"
           height="fit-content"
+          maxWidth="900px"
           sx={{
             display: 'flex',
             justifyContent: justifyTable ? 'left' : 'center',
             overflowX: 'auto',
             overflowY: 'hidden',
+            margin: 'auto',
           }}
         >
-          {/* <Box width={750} height="fit-content"> */}
           <Box height="fit-content">
             <ContactHeader />
 
             <Box
               backgroundColor={theme.palette.light.main}
-              // width={750}
               height="fit-content"
               px={4}
               py={2}

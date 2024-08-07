@@ -17,11 +17,6 @@ const RowSpacer = () => <Grid xs={12} my={0.5}></Grid>
 const ContactForm = () => {
   const { name, email, phone, reference } = useData()
 
-  const handleUpdate = (e, variableName) => {
-    const value = Number(e.target.value)
-    updateCalculationVariable(variableName, value)
-  }
-
   const theme = useTheme()
 
   return (

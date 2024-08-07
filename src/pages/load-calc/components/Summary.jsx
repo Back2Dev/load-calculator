@@ -40,14 +40,7 @@ const Summary = () => {
   const theme = useTheme()
 
   return (
-    <Box
-      backgroundColor="#E4F1FB"
-      width={750}
-      height="fit-content"
-      p={4}
-      sx={{ flexGrow: 1 }}
-      mt={0}
-    >
+    <Box p={2} sx={{ flexGrow: 1 }}>
       <Grid container rowSpacing={1} columnSpacing={2}>
         <SummaryRow
           description="Daily kWh usage"
@@ -55,14 +48,12 @@ const Summary = () => {
           keyName={'dailyUsage'}
           suffix="kWh"
         />
-
         <SummaryRow
           description="Peak load (total load)"
           value={totalLoad}
           keyName={'totalLoad'}
           suffix="kW"
         />
-
         <RowSpacer />
 
         <Alert severity="info" sx={alertStyle}>
@@ -109,7 +100,7 @@ const Summary = () => {
           description="Nominated battery depth of discharge (DoD)"
           value={dod}
           keyName={'dod'}
-          defaultValue={80}
+          defaultValue={70}
           range={[0, 80]}
           step={20}
           suffix="%"
@@ -119,8 +110,8 @@ const Summary = () => {
           description="Nominated days of autonomy (DoA)"
           value={doa}
           keyName={'doa'}
-          defaultValue={3}
-          range={[2, 14]}
+          defaultValue={2}
+          range={[0, 10]}
           step={2}
           suffix="d"
         />
@@ -132,14 +123,12 @@ const Summary = () => {
           keyName={'continuousLoad'}
           suffix="kW"
         />
-
         <SummaryRow
           description="Minimum solar PV"
           value={minSolar}
           keyName={'minSolar'}
           suffix="kW"
         />
-
         <SummaryRow
           description="Minimum required battery capacity"
           value={nameplate}

@@ -77,7 +77,6 @@ const Summary = () => {
           keyName={'percentActive'}
           defaultValue={80}
           editable={true}
-          suffix="%"
           range={[0, 100]}
           step={20}
           suffix="%"

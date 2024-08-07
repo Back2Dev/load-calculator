@@ -244,7 +244,7 @@ export const defaultData = {
       icon: 'HouseholdAirCon',
     },
     {
-      name: 'Vaccum Cleaner',
+      name: 'Vacuum Cleaner',
       quantity: 0,
       watts: 800,
       hours: 1,
@@ -326,7 +326,7 @@ export const defaultData = {
       icon: 'WorkshopBenchSaw',
     },
   ],
-  'Outdoor': [
+  Outdoor: [
     {
       name: 'Pond Pump',
       quantity: 0,

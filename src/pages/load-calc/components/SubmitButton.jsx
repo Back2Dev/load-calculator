@@ -30,16 +30,12 @@ const SubmitButton = () => {
         formData,
         surveySlug: 'dpa-load-calc-v1',
       }
-      const response = await axios.post(
-        'http://forms.dpasolar.com.au/forms/submit',
-        body,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + process.env.API_KEY,
-          },
+      const response = await axios.post(import.meta.env.VITE_FORMS_SERVER, body, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + import.meta.env.VITE_API_KEY,
         },
-      )
+      })
       if (response.status !== 200)
         return { status: 'failed', message: response.data[0].message }
 

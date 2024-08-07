@@ -34,7 +34,7 @@ const ContactForm = () => {
       // mt={6}
     >
       <Typography
-        color={theme.palette.black.main}
+        color={theme.palette.primary.main}
         textAlign="left"
         fontSize={18}
         lineHeight={1.5}
@@ -64,7 +64,7 @@ const ContactForm = () => {
           <ul>
             <li>A copy of the file will be kept for future reference.</li>
             <li>We will never email you marketing information.</li>
-            <li>We will not sell your information to anyone.</li>
+            <li>We will not sell your information to</li>
           </ul>
         </Alert>
       </Grid>

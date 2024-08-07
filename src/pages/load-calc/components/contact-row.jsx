@@ -33,9 +33,13 @@ const ContactRow = ({ description, value, field, suffix, keyName, defaultValue }
         value={value}
         id={field}
         onChange={(e) => handleUpdate(e, keyName)}
+        InputLabelProps={{
+          sx: { color: theme.palette.primary.main },
+        }}
         sx={{
           width: '80%',
           backgroundColor: theme.palette.white.main,
+          color: theme.palette.primary.main,
           '& .MuiOutlinedInput-input': {
             height: '1.25rem',
             color: theme.palette.primary.main,

@@ -58,7 +58,7 @@ const Summary = () => {
 
         <Alert severity="info" sx={alertStyle}>
           Use the sliders to adjust your parameters, and calculate required battery
-          capacity and minimum solar PV:
+          capacity and minimum solar PV.
         </Alert>
         <RowSpacer />
 
@@ -139,8 +139,7 @@ const Summary = () => {
         <RowSpacer />
 
         <Alert severity="warning" sx={alertStyle}>
-          Note that any calculation is an approximation, and only as accurate as the
-          information you provide.
+          Note that calculations are an approximation, and should only be used as a reference.
         </Alert>
       </Grid>
     </Box>

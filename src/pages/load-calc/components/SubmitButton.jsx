@@ -58,9 +58,9 @@ const SubmitButton = () => {
 
   const ok = status.match(/success/i)
   return (
-    <Box sx={{ justifyContent: 'center', marginTop: '2rem', marginBottom: '1rem' }}>
+    <Box sx={{ justifyContent: 'center', marginTop: '2rem', marginBottom: '3rem' }}>
       <Button variant="contained" onClick={submitForm} size="large">
-        Save Load Calculations
+        Generate Report
       </Button>
       <Collapse in={status !== ''}>
         <Alert

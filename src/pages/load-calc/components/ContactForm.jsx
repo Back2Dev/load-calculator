@@ -21,12 +21,8 @@ const ContactForm = () => {
 
   return (
     <Box
-      backgroundColor="#E4F1FB"
-      width={750}
-      height="fit-content"
       p={4}
       sx={{ flexGrow: 1 }}
-      // mt={6}
     >
       <Typography
         color={theme.palette.primary.main}
@@ -34,14 +30,13 @@ const ContactForm = () => {
         fontSize={18}
         lineHeight={1.5}
         mx={2}
+        mb={2}
       >
-        We will email you a copy of these calculations in a PDF file. Please provide an
-        email address and a reference (eg customer name or property address) to help you
-        identify it later.
+        We will send a copy of the calculations to your email - please fill in your details so your report can be identified.
       </Typography>
       <Grid container rowSpacing={1} columnSpacing={2}>
         <ContactRow
-          description="Your reference, e.g. name or property address"
+          description="Your reference (number, name, or address)"
           value={reference}
           field="reference"
         />
@@ -59,7 +54,7 @@ const ContactForm = () => {
           <ul>
             <li>A copy of the file will be kept for future reference.</li>
             <li>We will never email you marketing information.</li>
-            <li>We will not sell your information to</li>
+            <li>We will never sell your information to anyone.</li>
           </ul>
         </Alert>
       </Grid>

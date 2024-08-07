@@ -25,7 +25,7 @@ const ContactHeader = () => {
               fontSize={16}
               variant="subtitle2"
             >
-              FOR YOUR REFERENCE...
+              FOR YOUR REFERENCE
             </Typography>
           </Grid>
         </Grid>

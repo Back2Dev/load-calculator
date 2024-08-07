@@ -11,11 +11,10 @@ const TableHeaders = () => {
     <>
       <Box
         backgroundColor={theme.palette.primary.main}
-        width="100%"
         height="fit-content"
         px={4}
-        pt={2}
-        pb={1}
+        pt={3}
+        pb={3}
         sx={{ flexGrow: 1 }}
       >
         <Grid container rowSpacing={0} columnSpacing={2}>
@@ -63,7 +62,7 @@ const TableHeaders = () => {
               lineHeight={1.0}
               variant="subtitle2"
             >
-              H/DAY
+              HOURS PER DAY
             </Typography>
           </Grid>
           <Grid xs={1.5} sx={{ textAlign: 'center', alignSelf: 'center' }}>
@@ -74,7 +73,7 @@ const TableHeaders = () => {
               lineHeight={1.0}
               variant="subtitle2"
             >
-              WATT/H/DAY
+              WATT HOUR DAY
             </Typography>
           </Grid>
           <Grid xs={0.5} sx={{ textAlign: 'center', alignSelf: 'center' }}>
@@ -90,7 +89,6 @@ const TableHeaders = () => {
       </Box>
       <Box
         backgroundColor={theme.palette.secondary.main}
-        width="100%"
         height="3px"
         px={4}
         py={0}

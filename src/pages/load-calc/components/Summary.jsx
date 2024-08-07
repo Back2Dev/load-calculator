@@ -33,12 +33,8 @@ const Summary = () => {
 
   return (
     <Box
-      backgroundColor="#E4F1FB"
-      width={750}
-      height="fit-content"
-      p={4}
+      p={2}
       sx={{ flexGrow: 1 }}
-      mt={6}
     >
       <Grid container rowSpacing={1} columnSpacing={2}>
         <SummaryRow
@@ -47,16 +43,13 @@ const Summary = () => {
           keyName={'dailyUsage'}
           suffix="kWh"
         />
-
         <SummaryRow
           description="Peak load (total load)"
           value={totalLoad}
           keyName={'totalLoad'}
           suffix="kW"
         />
-
         <RowSpacer />
-
         <SummaryRow
           description="Percent of appliances on at once"
           value={percentActive}
@@ -65,27 +58,13 @@ const Summary = () => {
           editable={true}
           suffix="%"
         />
-
-{/* {description === 'Percent of appliances on at once' && (
-          <SummaryRow
-            description={<Typography fontWeight="bold">{description}</Typography>}
-            value={percentActive}
-            keyName={'percentActive'}
-            defaultValue={80}
-            editable={true}
-            suffix="%"
-          />
-        )} */}
-
         <SummaryRow
           description="Continuous load"
           value={continuousLoad}
           keyName={'continuousLoad'}
           suffix="kW"
         />
-
         <RowSpacer />
-
         <SummaryRow
           description="Mid winter effective sun hours"
           value={winterSunHours}
@@ -94,16 +73,13 @@ const Summary = () => {
           defaultValue={2}
           editable={true}
         />
-
         <SummaryRow
           description="Minimum solar PV"
           value={minSolar}
           keyName={'minSolar'}
           suffix="kW"
         />
-
         <RowSpacer />
-
         <SummaryRow
           description="Nominated battery depth of discharge (DoD)"
           value={dod}
@@ -112,7 +88,6 @@ const Summary = () => {
           defaultValue={80}
           editable={true}
         />
-
         <SummaryRow
           description="Nominated days of autonomy (DoA)"
           value={doa}
@@ -121,9 +96,7 @@ const Summary = () => {
           defaultValue={2}
           editable={true}
         />
-
         <RowSpacer />
-
         <SummaryRow
           description="Minimum required battery capacity"
           value={nameplate}

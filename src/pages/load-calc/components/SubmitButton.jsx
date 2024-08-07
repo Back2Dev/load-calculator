@@ -62,7 +62,7 @@ const SubmitButton = () => {
 
   const ok = status.match(/success/i)
   return (
-    <Box sx={{ width: '50%', display: 'flex', justifyContent: 'center' }}>
+    <Box sx={{ justifyContent: 'center', marginTop:'2rem', marginBottom:'1rem' }}>
       <Button variant="contained" onClick={submitForm} size="large">
         Submit
       </Button>
@@ -74,7 +74,6 @@ const SubmitButton = () => {
           {status} {message}
         </Alert>
       </Collapse>
-      )
     </Box>
   )
 }

@@ -1,5 +1,7 @@
-import { defaultData } from './assets/defaultData'
+import { defaultData } from './defaultData'
 import { cloneDeep } from 'lodash'
+import dbg from 'debug'
+const debug = dbg('app:reducer')
 
 export const initialState = {
   applianceGroups: cloneDeep(defaultData), // editable -
@@ -27,23 +29,23 @@ export const dataReducer = (state, action) => {
 
   switch (type) {
     case ACTION.UPDATE_APPLIANCE:
-      console.log('UPDATE_APPLIANCE')
+      debug('UPDATE_APPLIANCE', payload)
       return { ...payload }
 
     case ACTION.ADD_APPLIANCE:
-      console.log('ADD_APPLIANCE')
+      debug('ADD_APPLIANCE', payload)
       return { ...payload }
 
     case ACTION.REMOVE_APPLIANCE:
-      console.log('REMOVE_APPLIANCE')
+      debug('REMOVE_APPLIANCE', payload)
       return { ...payload }
 
     case ACTION.UPDATE_CALCULATION_VARIABLE:
-      console.log('UPDATE_CALCULATION_VARIABLE')
+      debug('UPDATE_CALCULATION_VARIABLE', payload)
       return { ...payload }
 
     default:
-      console.log('default')
+      debug('Unsupported action.type (SHOULD NEVER HAPPEN)', payload)
       return state
   }
 }

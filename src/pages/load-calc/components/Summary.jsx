@@ -2,11 +2,13 @@ import React from 'react'
 import { TextField, Box, Typography } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
 import InputAdornment from '@mui/material/InputAdornment'
+import Alert from '@mui/material/Alert'
 
 import Item from './Item'
 import { useData } from '../DataContext'
 import { useTheme } from '@emotion/react'
 import SummaryRow from './SummaryRow'
+import SliderRow from './slider-row'
 
 const RowSpacer = () => <Grid xs={12} my={0.5}></Grid>
 
@@ -38,7 +40,7 @@ const Summary = () => {
       height="fit-content"
       p={4}
       sx={{ flexGrow: 1 }}
-      mt={6}
+      mt={0}
     >
       <Grid container rowSpacing={1} columnSpacing={2}>
         <SummaryRow
@@ -57,16 +59,19 @@ const Summary = () => {
 
         <RowSpacer />
 
-        <SummaryRow
+        <SliderRow
           description="Percent of appliances on at once"
           value={percentActive}
           keyName={'percentActive'}
           defaultValue={80}
           editable={true}
           suffix="%"
+          range={[0, 100]}
+          step={20}
+          suffix="%"
         />
 
-{/* {description === 'Percent of appliances on at once' && (
+        {/* {description === 'Percent of appliances on at once' && (
           <SummaryRow
             description={<Typography fontWeight="bold">{description}</Typography>}
             value={percentActive}
@@ -77,22 +82,44 @@ const Summary = () => {
           />
         )} */}
 
+        <RowSpacer />
+
+        <SliderRow
+          description="Mid winter effective sun hours"
+          value={winterSunHours}
+          keyName={'winterSunHours'}
+          defaultValue={2}
+          range={[1, 8]}
+          step={2}
+          suffix="h"
+        />
+
+        <SliderRow
+          description="Nominated battery depth of discharge (DoD)"
+          value={dod}
+          keyName={'dod'}
+          defaultValue={80}
+          range={[0, 80]}
+          step={20}
+          suffix="%"
+        />
+
+        <SliderRow
+          description="Nominated days of autonomy (DoA)"
+          value={doa}
+          keyName={'doa'}
+          defaultValue={3}
+          range={[2, 14]}
+          step={2}
+          suffix="d"
+        />
+
+        <RowSpacer />
         <SummaryRow
           description="Continuous load"
           value={continuousLoad}
           keyName={'continuousLoad'}
           suffix="kW"
-        />
-
-        <RowSpacer />
-
-        <SummaryRow
-          description="Mid winter effective sun hours"
-          value={winterSunHours}
-          keyName={'winterSunHours'}
-          suffix="hours"
-          defaultValue={2}
-          editable={true}
         />
 
         <SummaryRow
@@ -102,34 +129,19 @@ const Summary = () => {
           suffix="kW"
         />
 
-        <RowSpacer />
-
-        <SummaryRow
-          description="Nominated battery depth of discharge (DoD)"
-          value={dod}
-          keyName={'dod'}
-          suffix={'%'}
-          defaultValue={80}
-          editable={true}
-        />
-
-        <SummaryRow
-          description="Nominated days of autonomy (DoA)"
-          value={doa}
-          keyName={'doa'}
-          suffix={doa > 1 ? 'days' : 'day'}
-          defaultValue={2}
-          editable={true}
-        />
-
-        <RowSpacer />
-
         <SummaryRow
           description="Minimum required battery capacity"
           value={nameplate}
           keyName={'nameplate'}
           suffix="kWh"
         />
+        <RowSpacer />
+        <RowSpacer />
+
+        <Alert severity="warning">
+          Note that any calculation is an approximation, and only as accurate as the
+          information you provide.
+        </Alert>
       </Grid>
     </Box>
   )

@@ -11,7 +11,6 @@ const ContactHeader = () => {
     <>
       <Box
         backgroundColor={theme.palette.primary.main}
-        width="100%"
         height="fit-content"
         px={4}
         pt={2}
@@ -27,14 +26,13 @@ const ContactHeader = () => {
               lineHeight={1.0}
               variant="subtitle2"
             >
-              CONTACT INFORMATION
+              FOR YOUR REFERENCE...
             </Typography>
           </Grid>
         </Grid>
       </Box>
       <Box
         backgroundColor={theme.palette.secondary.main}
-        width="100%"
         height="3px"
         px={4}
         py={0}

@@ -1,24 +1,16 @@
 import React from 'react'
 import { TextField, Box, Typography } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
-import InputAdornment from '@mui/material/InputAdornment'
-
-import Item from './Item'
+import Alert from '@mui/material/Alert'
 import { useData } from '../DataContext'
 import { useTheme } from '@emotion/react'
-import SummaryRow from './SummaryRow'
+import ContactRow from './contact-row'
 import ContactHeader from './ContactHeader'
 
 const RowSpacer = () => <Grid xs={12} my={0.5}></Grid>
 
 const ContactForm = () => {
-  const {
-    fname,
-    lname,
-    email,
-    phone,
-    refno,
-  } = useData()
+  const { name, email, phone, reference } = useData()
 
   const handleUpdate = (e, variableName) => {
     const value = Number(e.target.value)
@@ -29,44 +21,49 @@ const ContactForm = () => {
 
   return (
     <Box
-    backgroundColor="#E4F1FB"
-    width={750}
-    height="fit-content"
-    p={4}
-    sx={{ flexGrow: 1 }}
-    mt={6}
-  >
-    <Grid container rowSpacing={1} columnSpacing={2}>
-      <SummaryRow
-        description="First Name"
-        value={fname}
-      />
+      backgroundColor="#E4F1FB"
+      width={750}
+      height="fit-content"
+      p={4}
+      sx={{ flexGrow: 1 }}
+      // mt={6}
+    >
+      <Typography
+        color={theme.palette.black.main}
+        textAlign="left"
+        fontSize={18}
+        lineHeight={1.5}
+        mx={2}
+      >
+        We will email you a copy of these calculations in a PDF file. Please provide an
+        email address and a reference (eg customer name or property address) to help you
+        identify it later.
+      </Typography>
+      <Grid container rowSpacing={1} columnSpacing={2}>
+        <ContactRow
+          description="Your reference,\n eg name or property address"
+          value={reference}
+          field="reference"
+        />
+        <ContactRow description="Your Name" value={name} field="name" />
 
-      <SummaryRow
-        description="Last Name"
-        value={lname}
-      />
+        <ContactRow description="Email" value={email} field="email" />
 
+        <ContactRow description="Phone (optional)" value={phone} field="phone" />
 
-      <SummaryRow
-        description="Email"
-        value={email}
+        <RowSpacer />
 
-      />
-
-      <SummaryRow
-        description="Phone"
-        value={phone}
-      />
-
-      <SummaryRow
-        description="Reference Number"
-        value={refno}
-      />
-
-    </Grid>
-  </Box>
-)
+        <Alert severity="info" style={{ textAlign: 'left' }}>
+          By providing us with your details you agree that we might contact you about the
+          Load Calculator.
+          <ul>
+            <li>A copy of the file will be kept for future reference.</li>
+            <li>We will never email you marketing information.</li>
+          </ul>
+        </Alert>
+      </Grid>
+    </Box>
+  )
 }
 
 export default ContactForm

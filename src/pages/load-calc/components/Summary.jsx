@@ -66,6 +66,17 @@ const Summary = () => {
           suffix="%"
         />
 
+{/* {description === 'Percent of appliances on at once' && (
+          <SummaryRow
+            description={<Typography fontWeight="bold">{description}</Typography>}
+            value={percentActive}
+            keyName={'percentActive'}
+            defaultValue={80}
+            editable={true}
+            suffix="%"
+          />
+        )} */}
+
         <SummaryRow
           description="Continuous load"
           value={continuousLoad}

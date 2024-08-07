@@ -6,7 +6,9 @@ import dbg from 'debug'
 import ApplianceGroup from './components/ApplianceGroup'
 import Summary from './components/Summary'
 import TableHeaders from './components/TableHeaders'
-import PdfDocumentMake from './components/PdfDocumentMake'
+import SummaryHeader from './components/SummaryHeader'
+import ContactForm from './components/ContactForm'
+import ContactHeader from './components/ContactHeader'
 import SubmitButton from './components/SubmitButton'
 import './styles.css'
 // import logo from '.src/assets/icons/dpa-logo.png'; 
@@ -15,11 +17,12 @@ const debug = dbg('app:calc')
 const Calc = ({ applianceGroups = {} }) => {
   const theme = useTheme()
 
-  const justifyTable = useMediaQuery('(max-width:750px)')
+  //const justifyTable = useMediaQuery('(max-width:750px)')
+  const justifyTable = useMediaQuery('(max-width:100%)')
 
   return (
     <>
-    {/* Header */}
+    {/* Body box */}
       <Box
         backgroundColor={theme.palette.white.main}
         width="100vw" // TODO: Don't use vw
@@ -28,18 +31,19 @@ const Calc = ({ applianceGroups = {} }) => {
       >
         {/* Blue banner */}
         <Box
-          width="max-width"
+         // width="max-width"
           minHeight="50px"
           height="fit-content"
           pt={3}
-          pb={1}
+          pb={2}
           sx={{
             display: 'flex',
             background: 'linear-gradient(to right, #005288 , #00A4E4)',
             justifyContent: 'center',
           }}
         >
-          <Box backgroundColor="" width={800} height="fit-content">
+          {/* <Box backgroundColor="" width={800} height="fit-content"> */}
+          <Box height="fit-content">
           {/* <img src={logo} alt="DPA Logo" /> */}
             <Typography
               variant="h4"
@@ -53,23 +57,23 @@ const Calc = ({ applianceGroups = {} }) => {
           </Box>
         </Box>
 
-        {/* First instructions */}
+        {/* Appliance Instructions */}
         <Box
-          width="100vw" // TODO: Don't use vw
+          // width="100vw" // TODO: Don't use vw
           height="fit-content"
           sx={{
             display: 'flex',
-            background: 'white',
+            //background: 'white',
             justifyContent: 'center',
           }}
         >
-          <Box maxWidth={800} height="fit-content" backgroundColor="" my={4}>
+         {/* </Box> <Box maxWidth={800} height="fit-content" my={4}> */}
+          <Box height="fit-content" my={4}>
             <Typography
               color={theme.palette.black.main}
               textAlign="left"
               fontSize={18}
               lineHeight={1.5}
-              // variant="subtitle2"
               mx={2}
             >
               We want to help you calculate the right system. Fill the table below to estimate energy usage. Try to account for everything. We already included common household appliances.
@@ -101,24 +105,25 @@ const Calc = ({ applianceGroups = {} }) => {
           </Box>
         </Box>
         
-        {/* Table section */}
+        {/* Appliance table */}
         <Box
-          width="100vw"
+          // width="100vw"
           height="fit-content"
           sx={{
             display: 'flex',
-            background: '',
             justifyContent: justifyTable ? 'left' : 'center',
             overflowX: 'auto',
             overflowY: 'hidden',
           }}
         >
-          <Box width={750} height="fit-content">
+          {/* <Box width={750} height="fit-content"> */}
+          <Box height="fit-content"> 
+
             <TableHeaders />
 
             <Box
               backgroundColor={theme.palette.light.main}
-              width={750}
+              // width={750}
               height="fit-content"
               px={4}
               py={2}
@@ -133,8 +138,20 @@ const Calc = ({ applianceGroups = {} }) => {
                 />
               ))}
             </Box>
+            </Box>
+        </Box>
 
-            {/* Second instructions */}
+        {/* Summary instructions */}
+        <Box
+          // width="100vw" // TODO: Don't use vw
+          height="fit-content"
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          {/* </Box><Box maxWidth={800} height="fit-content" my={4}> */}
+          <Box height="fit-content" my={4}>
             <Typography
               color={theme.palette.black.main}
               textAlign="left"
@@ -150,13 +167,108 @@ const Calc = ({ applianceGroups = {} }) => {
               <li>Nominated days of autonomy</li>
             </ol>
             </Typography>
-            <Summary />
+          </Box>
+        </Box>
+        
+        {/* Summary table */}
+        <Box
+          // width="100vw"
+          height="fit-content"
+          sx={{
+            display: 'flex',
+            justifyContent: justifyTable ? 'left' : 'center',
+            overflowX: 'auto',
+            overflowY: 'hidden',
+          }}
+        >
+          {/* <Box width={750} height="fit-content"> */}
+          <Box height="fit-content"> 
+            
+            <SummaryHeader />
+
+            <Box
+              backgroundColor={theme.palette.light.main}
+              // width={750}
+              height="fit-content"
+              px={4}
+              py={1}
+              sx={{ flexGrow: 1 }}
+            >
+              <Summary />
+            </Box>
+            </Box>
+        </Box>
+
+        {/* Contact Form */}
+        <Box
+          // width="100vw" // TODO: Don't use vw
+          height="fit-content"
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          {/* <Box maxWidth={800} height="fit-content" my={4}> */}
+          <Box height="fit-content" my={4}>
+            <Typography
+              color={theme.palette.black.main}
+              textAlign="left"
+              fontSize={18}
+              lineHeight={1.5}
+              mx={2}
+            >
+             We need your details so we can send you the report. You can also include a Reference Number (optional) to identify the document.
+            </Typography>
+          </Box>
+        </Box>
+        
+        {/* Contact Table */}
+        <Box
+          // width="100vw"
+          height="fit-content"
+          sx={{
+            display: 'flex',
+            justifyContent: justifyTable ? 'left' : 'center',
+            overflowX: 'auto',
+            overflowY: 'hidden',
+          }}
+        >
+          {/* <Box width={750} height="fit-content"> */}
+          <Box height="fit-content"> 
+            
+            <ContactHeader />
+
+            <Box
+              backgroundColor={theme.palette.light.main}
+              // width={750}
+              height="fit-content"
+              px={4}
+              py={2}
+              sx={{ flexGrow: 1 }}
+            >
+
+              <ContactForm />
+
+            </Box>
+            </Box>
+        </Box>
+        <Box height="fit-content" my={4}>
+            <Typography
+              color={theme.palette.black.main}
+              textAlign="left"
+              fontSize={18}
+              lineHeight={1.5}
+              mx={2}
+            >
+              Note that any calculation is an approximation, and only as accurate as the information you provide. By providing us with your details you agree that we might contact you about the Calculator Report. A copy will be kept for future reference. We will never email you marketing information.
+              
+            </Typography>
           </Box>
         </Box>
 
-        <SubmitButton />
-        <PdfDocumentMake />
-      </Box>
+        <SubmitButton /> 
+
+
     </>
   )
 }

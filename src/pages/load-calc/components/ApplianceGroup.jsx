@@ -66,7 +66,7 @@ const ApplianceGroup = ({ groupName, appliances }) => {
                     {
                         (appliances.length > MINIMUM_APPLIANCES_DISPLAYED)
                             ? open
-                                ? <Typography color={theme.palette.primary.main} variant='subtitle2' sx={{ fontWeight: 'bold', marginTop: '-0.75rem', marginLeft: '0.5rem' }} onClick={handleClick}>- Less appliances</Typography>
+                                ? <Typography color={theme.palette.primary.main} variant='subtitle2' sx={{ fontWeight: 'bold', marginTop: '-0.75rem', marginLeft: '1.5rem' }} onClick={handleClick}>- Less appliances</Typography>
                                 : <Typography color={theme.palette.primary.main} variant='subtitle2' sx={{ fontWeight: 'bold', marginTop: '-0.75rem', marginLeft: '0.5rem' }} onClick={handleClick}>+ More appliances</Typography>
                             : null
                     }

@@ -8,7 +8,7 @@
 
 ### PDF
 
-- Remove PDFMake and react/pdf from package.json
+- Remove PDFMake and react/pdf from package.json --done
 - Remove Download button --done
 
 ### Styling
@@ -26,9 +26,9 @@
 
 ### Additional fields
 
-- Add verbiage to say
+- Add verbiage to say --done
 
-We will keep a copy of your calculations for future reference. We can email a PDF file to you for your own records. Please provide an email address, and a reference for the calculation, which can be a customer name, company name or property address, or even a reference number.
+We will keep a copy of your calculations for future reference. We can email a PDF file to you for your own records. Please provide an email address, and a reference for the calculation, which can be a customer name, company name or property address, or even a reference number. 
 
 If you would like us to advise you on selecting components that will
 

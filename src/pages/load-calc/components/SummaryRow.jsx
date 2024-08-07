@@ -17,6 +17,7 @@ const SummaryRow = ({
   keyName,
   defaultValue,
   editable = false,
+
 }) => {
   const { updateCalculationVariable } = useData()
 
@@ -28,7 +29,7 @@ const SummaryRow = ({
   const theme = useTheme()
 
   const resetValue = () => updateCalculationVariable(keyName, defaultValue)
-
+  
   return (
     <>
       <Grid xs={8}>
@@ -100,5 +101,6 @@ const SummaryRow = ({
     </>
   )
 }
+
 
 export default SummaryRow

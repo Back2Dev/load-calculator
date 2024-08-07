@@ -12,6 +12,12 @@ import SliderRow from './slider-row'
 
 const RowSpacer = () => <Grid xs={12} my={0.5}></Grid>
 
+const alertStyle = {
+  width: '100%',
+  backgroundColor: 'transparent',
+  border: '1px solid #00A4E4',
+}
+
 const Summary = () => {
   const {
     totalLoad,
@@ -57,6 +63,12 @@ const Summary = () => {
           suffix="kW"
         />
 
+        <RowSpacer />
+
+        <Alert severity="info" sx={alertStyle}>
+          Use the sliders to adjust your parameters, and calculate required battery
+          capacity and minimum solar PV:
+        </Alert>
         <RowSpacer />
 
         <SliderRow
@@ -138,7 +150,7 @@ const Summary = () => {
         <RowSpacer />
         <RowSpacer />
 
-        <Alert severity="warning">
+        <Alert severity="warning" sx={alertStyle}>
           Note that any calculation is an approximation, and only as accurate as the
           information you provide.
         </Alert>

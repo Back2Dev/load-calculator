@@ -57,8 +57,8 @@ const SliderRow = ({
 
   return (
     <>
-      <Grid xs={6}>
-        <Typography variant="button" gutterBottom color="navy">
+      <Grid xs={5}>
+        <Typography variant="body1" gutterBottom color="navy" sx={{ textAlign: 'left' }}>
           {description}
         </Typography>
       </Grid>

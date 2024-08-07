@@ -144,33 +144,6 @@ const Calc = ({ applianceGroups = {} }) => {
         </Box>
 
         {/* Summary instructions */}
-        <Box
-          // width="100vw" // TODO: Don't use vw
-          height="fit-content"
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          {/* </Box><Box maxWidth={800} height="fit-content" my={4}> */}
-          <Box height="fit-content" my={4}>
-            <Typography
-              color={theme.palette.black.main}
-              textAlign="left"
-              fontSize={18}
-              lineHeight={1.5}
-              mx={2}
-            >
-              Adjust the following values to meet the requirements of your project:
-              <ol>
-                <li>Percent of appliances on at once</li>
-                <li>Mid winter effective sun hours</li>
-                <li>Nominated battery depth of discharge</li>
-                <li>Nominated days of autonomy</li>
-              </ol>
-            </Typography>
-          </Box>
-        </Box>
 
         {/* Summary table */}
         <Box

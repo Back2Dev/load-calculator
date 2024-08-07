@@ -6,7 +6,12 @@ import { useData } from '../DataContext'
 import { useTheme } from '@emotion/react'
 import ContactRow from './contact-row'
 import ContactHeader from './ContactHeader'
-
+const alertStyle = {
+  width: '100%',
+  backgroundColor: 'transparent',
+  border: '1px solid #00A4E4',
+  textAlign: 'left',
+}
 const RowSpacer = () => <Grid xs={12} my={0.5}></Grid>
 
 const ContactForm = () => {
@@ -41,11 +46,11 @@ const ContactForm = () => {
       </Typography>
       <Grid container rowSpacing={1} columnSpacing={2}>
         <ContactRow
-          description="Your reference,\n eg name or property address"
+          description="Your reference, e.g. name or property address"
           value={reference}
           field="reference"
         />
-        <ContactRow description="Your Name" value={name} field="name" />
+        <ContactRow description="Your name" value={name} field="name" />
 
         <ContactRow description="Email" value={email} field="email" />
 
@@ -53,12 +58,13 @@ const ContactForm = () => {
 
         <RowSpacer />
 
-        <Alert severity="info" style={{ textAlign: 'left' }}>
+        <Alert severity="info" style={alertStyle}>
           By providing us with your details you agree that we might contact you about the
           Load Calculator.
           <ul>
             <li>A copy of the file will be kept for future reference.</li>
             <li>We will never email you marketing information.</li>
+            <li>We will not sell your information to anyone.</li>
           </ul>
         </Alert>
       </Grid>

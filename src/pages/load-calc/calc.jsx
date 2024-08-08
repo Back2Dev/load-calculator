@@ -36,9 +36,9 @@ const Calc = ({ applianceGroups = {} }) => {
           }}
         >
           <img
-            src="/assets/icons/dpa-logo.png"
+            src="/images/dpa-solar-logo-small.png"
             alt="DPA Logo"
-            style={{ marginRight: '2rem' }}
+            style={{ marginRight: '2rem', width: '64PX' }}
           />
           <Typography
             variant="h4"

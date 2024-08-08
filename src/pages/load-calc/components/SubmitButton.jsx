@@ -14,6 +14,7 @@ const SubmitButton = () => {
   const theData = useData() || {}
   const [status, setStatus] = React.useState('')
   const [message, setMessage] = React.useState('')
+  const [file, setFile] = React.useState('')
 
   const submitForm = async () => {
     try {
@@ -30,6 +31,8 @@ const SubmitButton = () => {
         formData,
         surveySlug: 'dpa-load-calc-v1',
       }
+      setFile('')
+      setStatus('')
       const response = await axios.post(import.meta.env.VITE_FORMS_SERVER, body, {
         headers: {
           'Content-Type': 'application/json',
@@ -46,6 +49,7 @@ const SubmitButton = () => {
 
       setStatus('Success')
       setMessage('')
+      setFile(response.data.url)
     } catch (error) {
       console.error(error)
       setStatus('Failed')
@@ -58,17 +62,41 @@ const SubmitButton = () => {
 
   const ok = status.match(/success/i)
   return (
-    <Box sx={{ justifyContent: 'center', marginTop: '2rem', marginBottom: '3rem' }}>
-      <Button variant="contained" onClick={submitForm} size="large">
+    <Box
+      sx={{
+        justifyContent: 'center',
+        marginTop: '2rem',
+        marginBottom: '3rem',
+      }}
+    >
+      <Button
+        variant="contained"
+        onClick={submitForm}
+        size="large"
+        sx={{ marginBottom: '1rem' }}
+      >
         Generate Report
       </Button>
       <Collapse in={status !== ''}>
         <Alert
           icon={ok ? <CheckIcon fontSize="inherit" /> : <ErrorIcon fontSize="inherit" />}
           severity={ok ? 'success' : 'error'}
+          sx={{ width: '20%', marginLeft: '40%' }}
         >
           {status} {message}
         </Alert>
+      </Collapse>
+      <Collapse in={file !== ''}>
+        <Button
+          href={file}
+          target="_blank"
+          variant="contained"
+          size="large"
+          color="secondary"
+          sx={{ marginTop: '1rem' }}
+        >
+          Download
+        </Button>
       </Collapse>
     </Box>
   )

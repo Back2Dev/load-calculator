@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useReducer } from 'react'
 import { ACTION, dataReducer, initialState } from './dataReducer'
 
-import { defaultData } from './defaultData'
+import { Rooms } from './defaultData'
+import { Contact } from './defaultData'
 import { cloneDeep } from 'lodash'
 import dbg from 'debug'
 const debug = dbg('app:reducer')
@@ -108,7 +109,7 @@ export const DataProvider = ({ children }) => {
   const resetAppliance = (groupName, applianceIndex) => {
     debug('resetAppliance')
 
-    const temp = cloneDeep(defaultData)
+    const temp = cloneDeep(Rooms)
 
     const appliance = state.applianceGroups[groupName][applianceIndex]
 

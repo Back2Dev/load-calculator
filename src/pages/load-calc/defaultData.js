@@ -1,5 +1,5 @@
 export const defaultData = {
-  Kitchen: [
+Rooms: {  Kitchen: [
     {
       name: 'Electric Stovetop',
       quantity: 0,
@@ -359,5 +359,11 @@ export const defaultData = {
       total: 0,
       icon: 'OutdoorChainsaw',
     },
-  ],
+  ],},
+  Contact: {
+    reference: 0,
+      name: 0,
+      email: 0,
+      phone: 0,
+  },
 }

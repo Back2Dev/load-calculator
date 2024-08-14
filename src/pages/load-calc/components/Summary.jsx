@@ -38,7 +38,7 @@ const Summary = () => {
   }
 
   const theme = useTheme()
-
+  
   return (
     <Box p={2} sx={{ flexGrow: 1 }}>
       <Grid container rowSpacing={1} columnSpacing={2}>
@@ -73,17 +73,6 @@ const Summary = () => {
           suffix="%"
         />
 
-        {/* {description === 'Percent of appliances on at once' && (
-          <SummaryRow
-            description={<Typography fontWeight="bold">{description}</Typography>}
-            value={percentActive}
-            keyName={'percentActive'}
-            defaultValue={80}
-            editable={true}
-            suffix="%"
-          />
-        )} */}
-
         <RowSpacer />
 
         <SliderRow
@@ -91,8 +80,8 @@ const Summary = () => {
           value={winterSunHours}
           keyName={'winterSunHours'}
           defaultValue={2}
-          range={[1, 8]}
-          step={2}
+          range={[1, 6]}
+          step={1}
           suffix="h"
         />
 
@@ -101,7 +90,7 @@ const Summary = () => {
           value={dod}
           keyName={'dod'}
           defaultValue={70}
-          range={[0, 80]}
+          range={[0, 100]}
           step={20}
           suffix="%"
         />

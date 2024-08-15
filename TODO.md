@@ -8,27 +8,27 @@
 
 ### PDF
 
-- Remove PDFMake and react/pdf from package.json
-- Remove Download button
+- Remove PDFMake and react/pdf from package.json --done
+- Remove Download button --done
 
 ### Styling
 
 - Add logo to top banner (Left)
-- Add company name to banner (right)
-- List items (`<ul>`) are rendering in white
-- Typography is different from https://dpasolar.com.au/app/dev/
-- src/index.css references `font-family: 'Montserrat';`
+- Add company name to banner (right) --probably shouldnt do this
+- List items (`<ul>`) are rendering in white --done
+- Typography is different from https://dpasolar.com.au/app/dev/ --done
+- src/index.css references `font-family: 'Montserrat';` --done
 - Don't use 100vw to force width
 - Don't use 100vh to force height
-- "HOURS PER DAY" is cramped, as is "WATTS PER DAY"
+- "HOURS PER DAY" is cramped, as is "WATTS PER DAY" --done
 - Column headings should be repeated on each table
-- For Bullet points, use `<ul>`, for numbers, use `<ol>`
+- For Bullet points, use `<ul>`, for numbers, use `<ol>` --done
 
 ### Additional fields
 
-- Add verbiage to say
+- Add verbiage to say --done
 
-We will keep a copy of your calculations for future reference. We can email a PDF file to you for your own records. Please provide an email address, and a reference for the calculation, which can be a customer name, company name or property address, or even a reference number.
+We will keep a copy of your calculations for future reference. We can email a PDF file to you for your own records. Please provide an email address, and a reference for the calculation, which can be a customer name, company name or property address, or even a reference number. 
 
 If you would like us to advise you on selecting components that will
 

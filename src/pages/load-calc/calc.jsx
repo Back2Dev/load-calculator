@@ -133,7 +133,6 @@ const Calc = ({ applianceGroups = {} }) => {
           </Box>
         </Box>
 
-        {/* Summary instructions */}
         {/* Summary table */}
         <Box
           height="fit-content"
@@ -169,7 +168,6 @@ const Calc = ({ applianceGroups = {} }) => {
             margin: 'auto',
           }}
         >
-          {/* <Box maxWidth={800} height="fit-content" my={4}> */}
           <Box height="fit-content" my={4}></Box>
         </Box>
 

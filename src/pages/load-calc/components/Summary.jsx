@@ -104,7 +104,6 @@ const Summary = () => {
           step={2}
           suffix="d"
         />
-
         <RowSpacer />
         <SummaryRow
           description="Continuous load"

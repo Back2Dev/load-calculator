@@ -1,10 +1,10 @@
-import { Rooms } from './defaultData'
+import { defaultData } from './defaultData'
 import { cloneDeep } from 'lodash'
 import dbg from 'debug'
 const debug = dbg('app:reducer')
 
 export const initialState = {
-  applianceGroups: cloneDeep(Rooms), // editable -
+  applianceGroups: cloneDeep(defaultData), // editable -
   totalLoad: 0,
   dailyUsage: 0,
   continuousLoad: 0,

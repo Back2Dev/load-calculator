@@ -36,7 +36,7 @@ const ContactForm = () => {
       </Typography>
       <Grid container rowSpacing={1} columnSpacing={2}>
         <ContactRow
-          description="Your reference (name, number, or address)"
+          description="Your reference (number, name, or address)"
           value={reference}
           field="reference"
         />

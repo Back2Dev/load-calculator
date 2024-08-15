@@ -21,11 +21,8 @@ const Calc = ({ applianceGroups = {} }) => {
 
   return (
     <>
-    {/* Body box */}
-      <Box
-        backgroundColor={theme.palette.white.main}
-        pb={3}
-      >
+      {/* Body box */}
+      <Box backgroundColor={theme.palette.white.main} pb={3}>
         {/* Blue banner */}
         <Box
           minHeight="50px"
@@ -35,18 +32,22 @@ const Calc = ({ applianceGroups = {} }) => {
             display: 'flex',
             background: 'linear-gradient(to right, #005288 , #00A4E4)',
             justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
           }}
         >
-          <img src="/assets/icons/dpa-logo.png" alt="DPA Logo" style={{ marginRight: '2rem' }}/>
-            <Typography
-              variant="h4"
-              fontWeight="bold"
-              color={theme.palette.white.main}
-              textAlign="left"
-            >
-              Off-Grid Load Calculator
-            </Typography>
+          <img
+            src="/images/dpa-solar-logo-small.png"
+            alt="DPA Logo"
+            style={{ marginRight: '2rem', width: '64PX' }}
+          />
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            color={theme.palette.white.main}
+            textAlign="left"
+          >
+            Off-Grid Load Calculator
+          </Typography>
         </Box>
 
         {/* Appliance Instructions */}
@@ -65,7 +66,10 @@ const Calc = ({ applianceGroups = {} }) => {
               lineHeight={1.5}
               mx={2}
             >
-              We want to help you build the right system. Our calculator is divided in 3 sections: Appliances, Consumption, and Contact. Fill the tables below to estimate your energy usage - try to account for everything. We already included common household appliances.
+              We want to help you build the right system. Our calculator is divided in 3
+              sections: Appliances, Consumption, and Contact. Fill the tables below to
+              estimate your energy usage - try to account for everything. We already
+              included common household appliances.
             </Typography>
 
             <Typography
@@ -77,23 +81,24 @@ const Calc = ({ applianceGroups = {} }) => {
               component="h3"
               mx={2}
             >
-            <ol>
-              <li>Select the electrical appliances that are in the home or business.</li>
-              <li>Use the plus or minus arrows to increase the number of units.</li>
-              <li>
-                Fill out ‘Watts’ - you can check this on the name plate of the appliance.
-              </li>
-              <li>
-                Fill out ’hours’ - you can confirm this with the property occupants.
-              </li>
-              <li>
-                Select ‘More appliances’ for more options.
-              </li>
-            </ol>
+              <ol>
+                <li>
+                  Select the electrical appliances that are in the home or business.
+                </li>
+                <li>Use the plus or minus arrows to increase the number of units.</li>
+                <li>
+                  Fill out ‘Watts’ - you can check this on the name plate of the
+                  appliance.
+                </li>
+                <li>
+                  Fill out ’hours’ - you can confirm this with the property occupants.
+                </li>
+                <li>Select ‘More appliances’ for more options.</li>
+              </ol>
             </Typography>
           </Box>
         </Box>
-        
+
         {/* Appliance table */}
         <Box
           height="fit-content"
@@ -106,8 +111,7 @@ const Calc = ({ applianceGroups = {} }) => {
             margin: 'auto',
           }}
         >
-          <Box height="fit-content"> 
-
+          <Box height="fit-content">
             <TableHeaders />
 
             <Box
@@ -126,50 +130,22 @@ const Calc = ({ applianceGroups = {} }) => {
                 />
               ))}
             </Box>
-            </Box>
+          </Box>
         </Box>
 
-        {/* Summary instructions */}
+        {/* Summary table */}
         <Box
-          maxWidth="800px"
+          height="fit-content"
+          maxWidth="900px"
           sx={{
             display: 'flex',
+            justifyContent: justifyTable ? 'left' : 'center',
+            overflowX: 'auto',
+            overflowY: 'hidden',
             margin: 'auto',
           }}
         >
-          <Box height="fit-content" my={4}>
-            <Typography
-              color={theme.palette.black.main}
-              textAlign="left"
-              fontSize={18}
-              lineHeight={1.5}
-              mx={2}
-            >
-              Adjust the following values to meet the requirements of your project:
-            <ol>
-              <li>Percent of appliances on at once</li>
-              <li>Mid winter effective sun hours</li>
-              <li>Nominated battery depth of discharge</li>
-              <li>Nominated days of autonomy</li>
-            </ol>
-            </Typography>
-          </Box>
-        </Box>
-        
-        {/* Summary table */}
-        <Box
-         height="fit-content"
-         maxWidth="900px"
-         sx={{
-           display: 'flex',
-           justifyContent: justifyTable ? 'left' : 'center',
-           overflowX: 'auto',
-           overflowY: 'hidden',
-           margin: 'auto',
-          }}
-        >
-          <Box height="fit-content"> 
-            
+          <Box height="fit-content">
             <SummaryHeader />
 
             <Box
@@ -181,7 +157,7 @@ const Calc = ({ applianceGroups = {} }) => {
             >
               <Summary />
             </Box>
-            </Box>
+          </Box>
         </Box>
 
         {/* Contact Form */}
@@ -192,19 +168,9 @@ const Calc = ({ applianceGroups = {} }) => {
             margin: 'auto',
           }}
         >
-          <Box height="fit-content" my={4}>
-            <Typography
-              color={theme.palette.black.main}
-              textAlign="left"
-              fontSize={18}
-              lineHeight={1.5}
-              mx={2}
-            >
-             We need your details so we can send you the report. You can also include a Reference Number (optional) to identify the document.
-            </Typography>
-          </Box>
+          <Box height="fit-content" my={4}></Box>
         </Box>
-        
+
         {/* Contact Table */}
         <Box
           height="fit-content"
@@ -215,10 +181,9 @@ const Calc = ({ applianceGroups = {} }) => {
             overflowX: 'auto',
             overflowY: 'hidden',
             margin: 'auto',
-           }}
+          }}
         >
-          <Box height="fit-content"> 
-            
+          <Box height="fit-content">
             <ContactHeader />
 
             <Box
@@ -228,36 +193,13 @@ const Calc = ({ applianceGroups = {} }) => {
               py={2}
               sx={{ flexGrow: 1 }}
             >
-
               <ContactForm />
-
             </Box>
-            </Box>
-        </Box>
-        <SubmitButton /> 
-          <Box
-          maxWidth="800px"
-          sx={{
-            display: 'flex',
-            margin: 'auto',
-          }}
-        >
-          <Box height="fit-content" my={4}>
-            <Typography
-              color={theme.palette.black.main}
-              textAlign="left"
-              fontSize={18}
-              lineHeight={1.5}
-              mx={2}
-            >
-             Note that any calculation is an approximation, and only as accurate as the information you provide. By providing us with your details you agree that we might contact you about the Calculator Report. A copy will be kept for future reference - we will never email you marketing information.
-            </Typography>
           </Box>
         </Box>
-        </Box>
+      </Box>
 
-       
-
+      <SubmitButton />
     </>
   )
 }
